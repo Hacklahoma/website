@@ -1,0 +1,190 @@
+/*
+   The style sheet for the Hacklahoma website.
+   
+   main.css
+   HacklahomaWebsite
+   
+   Created by Tyler Walker on 2017-06-01.
+   Copyright 2017 Tyler Walker and Hacklahoma. All rights reserved.
+*/
+
+/*
+	Avenir font.
+*/
+@font-face {
+	font-family: avenir;
+	src: url('../fonts/Avenir/AvenirNextLTPro-Regular.otf');
+}
+
+/*
+	Futura font.
+*/
+@font-face {
+	font-family: futura;
+	src: url('../fonts/Futura/FuturaPRO-Book.otf');
+}
+
+/*
+	Default settings for the body of the webpage.
+*/
+body {
+	background: #333333; /* Dark grey */
+	-webkit-font-smoothing: antialiased; /* Makes fonts smoother. Not necessary, just looks nice. */
+	
+	font-family: "avenir"; /* Use avenir by default, can change for certain elements. */
+	color: #FFF; /* Text color should be white by default, can change for certain elements. */
+}
+
+/*
+	The header of the main page. Contains the logo, date, location, and the information button.
+*/
+#header {
+	text-align: center;
+}
+
+/*
+	The style for the logo placed in the header.
+*/
+.logo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*
+	The style for the dates placed in the header.
+*/
+.dates {
+	font-size: 42px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+/*
+	The style for the location placed in the header.
+*/
+.location {
+	font-size: 28px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 0px;
+}
+
+/*
+	The style for the information button placed in the header.
+*/
+.infoButton {
+	background-color: #912929; /* Red from logo. */
+	border: none;
+	color: .FFF;
+	text-align: center;
+	font-size: 28px;
+	text-transform: uppercase;
+	padding: 8px 21px;
+	width: 250px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	transition: all 0.5s;
+	cursor: pointer;
+	display: block;
+	margin: auto;
+}
+
+/*
+	Stylize the text within the information button.
+*/
+.infoButton span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+/*
+	Stylize the text in the information button after the user hovers over it.
+*/
+.infoButton span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+/*
+	Change the look of the information button when the user hovers over it.
+*/
+.infoButton:hover span {
+	padding-right: 25px;
+}
+
+/*
+	Chagne the look of the information button after the user has hovered over it.
+*/
+.infoButton:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+
+/*
+	Style for the nav bar.
+*/
+#navBar {
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	width: 100%;
+	height: 50px;
+	background-color: #000000;
+	text-align: center;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	transition: 0.5s;
+}
+
+/*
+	Style for the links within the nav bar.
+*/
+#navBar a {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 19px 14px;
+	text-decoration: none;
+	transition: 0.5s;
+	height: 12px;
+}
+
+/*
+	Style for the links in the nav bar when the user hovers over them.
+*/
+#navBar a:hover {
+	background-color: #912929;
+	height: 12px;
+	transition: 0.5s;
+}
+
+/*
+	Properties for the position of the nav bar when the user is not looking at the content pane. 
+*/
+.absolute {
+	position: absolute;
+	bottom: 0;
+}
+
+/*
+	Properties for the position of the nav bar when the user is looking at the content pane.
+*/
+.fixed {
+	position: fixed;
+	top: 0;
+}
+
+/*
+	Style for the content container.
+*/
+#contentContainer {
+	text-align: center;
+	margin-top: 125px;
+}
