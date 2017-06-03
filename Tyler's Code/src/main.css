@@ -13,7 +13,15 @@
 */
 @font-face {
 	font-family: avenir;
-	src: url('../fonts/Avenir/AvenirNextLTPro-Regular.otf');
+	src: url('../fonts/Avenir/AvenirNextLTPro-UltLt.otf');
+}
+
+/*
+	Avenir medium font.
+*/
+@font-face {
+	font-family: avenirMedium;
+	src: url('../fonts/Avenir/AvenirNextLTPro-Medium.otf');
 }
 
 /*
@@ -25,14 +33,72 @@
 }
 
 /*
+	Futura heavy fond.
+*/
+@font-face {
+	font-family: futuraHeavy;
+	src: url('../fonts/Futura/FuturaPRO-Heavy.otf');
+}
+
+/*
 	Default settings for the body of the webpage.
 */
 body {
 	background: #333333; /* Dark grey */
 	-webkit-font-smoothing: antialiased; /* Makes fonts smoother. Not necessary, just looks nice. */
 	
-	font-family: "avenir"; /* Use avenir by default, can change for certain elements. */
+	font-family: "futura"; /* Use futura by default, can change for certain elements. */
 	color: #FFF; /* Text color should be white by default, can change for certain elements. */
+	
+	overflow-x: hidden;
+}
+
+/*
+	Default settings for text elements within the h1 tag.
+*/
+h1 {
+	font-family: "futura";
+	font-size: 42px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*
+	Default settings for text elements within the h1 tag used for main section headings.
+*/
+h1.anchor {
+	font-family: "futuraHeavy";
+	font-size: 48px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 60px;
+}
+
+/*
+	Default settings for text elements within the h2 tag.
+*/
+h2 {
+	font-family: "avenir";
+	font-size: 24px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*
+	Settings to use avenir medium.
+*/
+.avenirMedium {
+	font-family: "avenirMedium";
+	font-size: 24px;
+}
+
+/*
+	Settings to use futura heavy.
+*/
+.futuraHeavy {
+	font-family: "futuraHeavy";
+	font-size: 22px;
+	letter-spacing: 1px;
 }
 
 /*
@@ -78,7 +144,7 @@ body {
 .infoButton {
 	background-color: #912929; /* Red from logo. */
 	border: none;
-	color: .FFF;
+	color: #FFF;
 	text-align: center;
 	font-size: 28px;
 	text-transform: uppercase;
@@ -184,7 +250,122 @@ body {
 /*
 	Style for the content container.
 */
-#contentContainer {
-	text-align: center;
-	margin-top: 125px;
+#contentPane {
+	position: absolute;
+	padding-top: 10px;
+	width: 100%;
+	height: auto;
+	overflow: auto;
+	left: 0;
+}
+
+/*
+	Style for the About section.
+*/
+#about {
+	width: 100%;
+	height: auto;
+	padding-bottom: auto;
+}
+
+/*
+	Style for the section explaining what a hackathon is.
+*/
+#explain {
+	width: 50%;
+	height: auto;
+	float: right;
+	margin-bottom: 20px;
+	padding-right: 20px;
+}
+
+/*
+	Style for the section explaining our mission statement.
+*/
+#missionStatement {
+	width: 50%;
+	height: auto;
+	margin-bottom: 20px;
+	overflow: hidden;
+	padding-left: 15px;
+}
+
+/*
+	Style for the FAQ section.
+*/
+#faq {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+/*
+	Style for the Agenda section.
+*/
+#agenda {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
+}
+
+#sponsors {
+	display: block;
+	width: 100%;
+}
+
+/*
+	Content wrapper for the Sponsors section.
+*/
+.sponsorsLogos {
+	display: block;
+	width: 100%;
+	background-color: #FFF;
+	color: #000000;
+}
+
+/*
+	Style for the Judges section.
+*/
+#judges {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+/*
+	Style for the footer.
+*/
+#footer {
+	margin-top: 20px;
+	background-color: #000;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 400px;
+	position: absolute;
+	bottom: 0;
+}
+
+/*
+	Style for the OU logo.
+*/
+.ouLogo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+}
+
+/*
+	Style for the MLH logo.
+*/
+.mlhLogo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 200px;
 }
