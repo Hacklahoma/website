@@ -13,7 +13,7 @@
 */
 @font-face {
 	font-family: avenir;
-	src: url('../styles/fonts/Avenir/AvenirNextLTPro-UltLt.otf');
+	src: url('fonts/Avenir/AvenirNextLTPro-UltLt.otf');
 }
 
 /*
@@ -21,7 +21,7 @@
 */
 @font-face {
 	font-family: avenirMedium;
-	src: url('../styles/fonts/Avenir/AvenirNextLTPro-Medium.otf');
+	src: url('fonts/Avenir/AvenirNextLTPro-Medium.otf');
 }
 
 /*
@@ -29,7 +29,7 @@
 */
 @font-face {
 	font-family: futura;
-	src: url('../styles/fonts/Futura/FuturaPRO-Book.otf');
+	src: url('fonts/Futura/FuturaPRO-Book.otf');
 }
 
 /*
@@ -37,7 +37,7 @@
 */
 @font-face {
 	font-family: futuraHeavy;
-	src: url('../styles/fonts/Futura/FuturaPRO-Heavy.otf');
+	src: url('fonts/Futura/FuturaPRO-Heavy.otf');
 }
 
 /*
