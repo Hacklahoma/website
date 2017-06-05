@@ -13,6 +13,16 @@
 		<!-- Title of page. -->
 		<title>HACKLAHOMA</title>
 
+        <!-- Favicons etc -->
+        <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+        <link rel="manifest" href="images/manifest.json">
+        <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#841617">
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <meta name="msapplication-config" content="images/browserconfig.xml">
+        <meta name="theme-color" content="#333333">
+
 		<!-- Description for search engines. -->
 		<meta name="description" content="" /> <!-- TODO: CONTENT DESC HERE -->
 
@@ -25,23 +35,25 @@
 	</head>
 
 	<body onload="determineContentPaneLocation(); determineFooterLocation()">
-		<div id="header">
+		<header id="header">
 			<!-- Displays the logo on the screen. -->
-			<img src="images/official_logo.png" class="logo" />
+			<img src="images/hacklahoma_artisticlogo_transparent.svg" class="logo" />
 
 			<!-- Displays Hacklahoma under the logo. -->
-			<img src="images/title.png" class="logo" width="750" height="148"/>
+            <h1 style="margin-top: 0; margin-bottom: 1em;">HACKLAHOMA</h1>
 
 			<!-- The dates that Hacklahoma takes place. -->
-			<p class="dates">March 3rd - 4th, 2018</p>
+			<p class="dates">March 3 - 4, 2018</p>
 
 			<!-- The location that Hacklahoma takes place. -->
 			<p class=location>The University of Oklahoma</p>
 
 			<!-- Button to sign up for more information. -->
-			<button class="infoButton"><span>Interested? </span></button> <!-- TODO: Set up information page. -->
+			<button class="infoButton"><span>Interested?</span></button> <!-- TODO: Set up information page. -->
 
-			<!-- The nav bar. -->
+			<!-- The nav bar.
+                 TODO This should always be at the bottom of the splash, otherwise it overlaps on small screens
+                 TODO Mobile nav-->
 			<nav id="navBar" class="absolute">
 				<a href="#about" id="aboutLink">About</a>
 				<a href="#faq" id="faqLink">FAQ</a>
@@ -49,114 +61,113 @@
 				<a href="#sponsors" id="sponsorsLink">Sponsors</a>
 				<a href="#judges" id="judgesLink">Judges</a>
 			</nav>
-		</div>
+		</header>
 
 		<!-- The content pane of the main page. -->
 		<div id="contentPane">
 			<!-- TODO: Populate content. -->
 
 			<!-- The About section. -->
-			<div id="about">
-				<h1 class="anchor" style="text-align: center;">About</h1>
+			<section id="about">
+				<!--<h3 class="anchor" style="text-align: center;">About</h3>-->
 				<div id="explain">
-					<h1>What is Hacklahoma?</h1>
-					<h2>Hacklahoma is a <span class="avenirMedium">hackathon</span> soon to happen at the University of Oklahoma.</h2>
-					<h1>... well what is a Hackathon?</h1>
-					<h2>
-						A hackathon is best described as an <span class="avenirMedium">invention marathon</span>. Anyone who has an interest
-						in technology can attend a hackathon to <span class="avenirMedium">learn, build, and share</span> their creations over
-						the course of a weekend in a relaxed and welcoming atomosphere. <span class="avenirMedium">You don't have to be a
-						programmer</span> and you certainly <span class="avenirMedium">don't have to be majoring in computer science</span>. - MLH<br>
+					<h3>What is Hacklahoma?</h3>
+					<p>Hacklahoma is a <span class="bold">hackathon</span> soon to happen at the University of Oklahoma.</p>
+					<h3>... well what is a Hackathon?</h3>
+					<p>
+						A hackathon is best described as an <span class="bold">invention marathon</span>. Anyone who has an interest
+						in technology can attend a hackathon to <span class="bold">learn, build, and share</span> their creations over
+						the course of a weekend in a relaxed and welcoming atomosphere. <span class="bold">You don't have to be a
+						programmer</span> and you certainly <span class="bold">don't have to be majoring in computer science</span>. - MLH<br>
 
 						<ul>
-							<li>Hacking as in "life hack," <span class="avenirMedium">not the exploitation kind</span></li>
-							<li><span class="avenirMedium">A career fair with a twist</span>; mentors and engineers from companies, talks, etc. (bring your resume!)</li>
-							<li>For <span class="avenirMedium">beginners</span> and <span class="avenirMedium">pros</span></li>
-							<li>Very good <span class="avenirMedium">real-life experience</span></li>
-							<li>Great way to <span class="avenirMedium">network</span></li>
-							<li>Meet people from <span class="avenirMedium">all around the nation</span></li>
-							<li><span class="avenirMedium">Resume builder</span>, especially for companies like Google, Microsoft, etc.</li>
-							<li>Companies like <span class="avenirMedium">GroupMe</span> (now owned by Microsoft) <span class="avenirMedium">started at Hackathons</span></li>
+							<li>Hacking as in "life hack," <span class="bold">not the exploitation kind</span></li>
+							<li><span class="bold">A career fair with a twist</span>; mentors and engineers from companies, talks, etc. (bring your resume!)</li>
+							<li>For <span class="bold">beginners</span> and <span class="bold">pros</span></li>
+							<li>Very good <span class="bold">real-life experience</span></li>
+							<li>Great way to <span class="bold">network</span></li>
+							<li>Meet people from <span class="bold">all around the nation</span></li>
+							<li><span class="bold">Resume builder</span>, especially for companies like Google, Microsoft, etc.</li>
+							<li>Companies like <span class="bold">GroupMe</span> (now owned by Microsoft) <span class="bold">started at Hackathons</span></li>
 						</ul>
-					</h2>
+					</p>
 				</div>
 				<div id="missionStatement">
-					<h1>Mission Statement</h1>
-					<h2>
+					<h3>Mission Statement</h3>
+					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec dui aliquam, ornare ligula gravida, scelerisque nunc. Nam condimentum bibendum sapien.
 						Etiam et viverra nulla. Phasellus porttitor augue interdum, mattis nisi ac, finibus magna. Nullam non mattis ex, et feugiat lorem. Curabitur quis massa non elit
 						ultrices fermentum eget nec nisi. Nulla nisl tortor, tempus vel viverra sit amet, aliquam eu nibh. Suspendisse justo eros, laoreet maximus aliquet vitae, viverra
 						sed nisl. Donec finibus turpis ut pellentesque tempus. Curabitur maximus blandit dolor, vitae mollis augue molestie nec. Phasellus volutpat posuere tellus non convallis.
 						Aenean vitae mollis velit. Sed luctus nisl a risus lacinia, eget aliquam leo gravida. Fusce erat velit, aliquet eu odio et, viverra mollis tortor. Sed vitae vulputate turpis.
-					</h2>
+					</p>
 				</div>
-			</div>
+			</section>
 
 			<!-- The FAQ section. -->
-			<div id="faq">
-				<h1 class="anchor" style="text-align: center;">FAQ</h1>
-				<h2>
+			<section id="faq">
+				<h3 class="anchor" style="text-align: center;">FAQ</h3>
+				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec dui aliquam, ornare ligula gravida, scelerisque nunc. Nam condimentum bibendum sapien.
 					Etiam et viverra nulla. Phasellus porttitor augue interdum, mattis nisi ac, finibus magna. Nullam non mattis ex, et feugiat lorem. Curabitur quis massa non elit
 					ultrices fermentum eget nec nisi. Nulla nisl tortor, tempus vel viverra sit amet, aliquam eu nibh. Suspendisse justo eros, laoreet maximus aliquet vitae, viverra
 					sed nisl. Donec finibus turpis ut pellentesque tempus. Curabitur maximus blandit dolor, vitae mollis augue molestie nec. Phasellus volutpat posuere tellus non convallis.
 					Aenean vitae mollis velit. Sed luctus nisl a risus lacinia, eget aliquam leo gravida. Fusce erat velit, aliquet eu odio et, viverra mollis tortor. Sed vitae vulputate turpis.
-				</h2>
-			</div>
+				</p>
+			</section>
 
 			<!-- The Agenda section. -->
-			<div id="agenda">
-				<h1 class="anchor" style="text-align: center;">Agenda</h1>
-				<h2>
+			<section id="agenda">
+				<h3 class="anchor" style="text-align: center;">Agenda</h3>
+				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec dui aliquam, ornare ligula gravida, scelerisque nunc. Nam condimentum bibendum sapien.
 					Etiam et viverra nulla. Phasellus porttitor augue interdum, mattis nisi ac, finibus magna. Nullam non mattis ex, et feugiat lorem. Curabitur quis massa non elit
 					ultrices fermentum eget nec nisi. Nulla nisl tortor, tempus vel viverra sit amet, aliquam eu nibh. Suspendisse justo eros, laoreet maximus aliquet vitae, viverra
 					sed nisl. Donec finibus turpis ut pellentesque tempus. Curabitur maximus blandit dolor, vitae mollis augue molestie nec. Phasellus volutpat posuere tellus non convallis.
 					Aenean vitae mollis velit. Sed luctus nisl a risus lacinia, eget aliquam leo gravida. Fusce erat velit, aliquet eu odio et, viverra mollis tortor. Sed vitae vulputate turpis.
-				</h2>
-			</div>
+				</p>
+			</section>
 
 			<!-- The Sponsors section. -->
-			<div id="sponsors">
-				<h1 class="anchor" style="text-align: center">Sponsors</h1>
-				<h2>
+			<section id="sponsors">
+				<h3 class="anchor" style="text-align: center">Sponsors</h3>
+				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec dui aliquam, ornare ligula gravida, scelerisque nunc. Nam condimentum bibendum sapien.
 					Etiam et viverra nulla. Phasellus porttitor augue interdum, mattis nisi ac, finibus magna. Nullam non mattis ex, et feugiat lorem. Curabitur quis massa non elit
-				</h2>
+				</p>
 				<div class="sponsorsLogos">
-					<h2>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec dui aliquam, ornare ligula gravida, scelerisque nunc. Nam condimentum bibendum sapien.
-						Etiam et viverra nulla. Phasellus porttitor augue interdum, mattis nisi ac, finibus magna. Nullam non mattis ex, et feugiat lorem. Curabitur quis massa non elit
-					</h2>
+					<p>
+						This is for logos, so it's really wide.
+					</p>
 				</div>
-			</div>
+			</section>
 
 			<!-- The Judges section. -->
-			<div id="judges">
-				<h1 class="anchor" style="text-align: center;">Judges</h1>
-				<h2>
+			<section id="judges">
+				<h3 class="anchor" style="text-align: center;">Judges</h3>
+				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec dui aliquam, ornare ligula gravida, scelerisque nunc. Nam condimentum bibendum sapien.
 					Etiam et viverra nulla. Phasellus porttitor augue interdum, mattis nisi ac, finibus magna. Nullam non mattis ex, et feugiat lorem. Curabitur quis massa non elit
 					ultrices fermentum eget nec nisi. Nulla nisl tortor, tempus vel viverra sit amet, aliquam eu nibh. Suspendisse justo eros, laoreet maximus aliquet vitae, viverra
 					sed nisl. Donec finibus turpis ut pellentesque tempus. Curabitur maximus blandit dolor, vitae mollis augue molestie nec. Phasellus volutpat posuere tellus non convallis.
 					Aenean vitae mollis velit. Sed luctus nisl a risus lacinia, eget aliquam leo gravida. Fusce erat velit, aliquet eu odio et, viverra mollis tortor. Sed vitae vulputate turpis.
-				</h2>
-			</div>
+				</p>
+			</section>
 		</div>
 
 		<!-- The footer of the main page. -->
-		<div id="footer">
+		<footer id="footer">
 			<!-- <img src="images/ou.png" class="ouLogo" />
 			<img src="images/mlh.png" class="mlhLogo" /> -->
-			<img src="images/gear.png" class="gear" />
+			<!--<img src="images/gear.png" class="gear" />-->
 			<p style="font-size: 22px;">team@hacklahoma.org</p>
 
 			<div class="socialMedia">
-				<a href="https://www.facebook.com/Hacklahoma/"> <img src="images/facebook.jpg" /> </a>
-				<a href="https://twitter.com/hacklahoma"> <img src="images/twitter.jpg" /> </a>
-				<a href="https://www.instagram.com/hacklahoma/"> <img src="images/instagram.jpg" /> </a>
+				<a class="neverUnderline" href="https://www.facebook.com/Hacklahoma/"><img src="images/facebook.jpg"/></a>
+				<a class="neverUnderline" href="https://twitter.com/hacklahoma"><img src="images/twitter.jpg"/></a>
+				<a class="neverUnderline" href="https://www.instagram.com/hacklahoma/"><img src="images/instagram.jpg"/></a>
 			</div>
-		</div>
+		</footer>
 
 		<!-- Link this page to the scripts that will run on the site. -->
 		<script src="scripts/scripts.js"></script>
