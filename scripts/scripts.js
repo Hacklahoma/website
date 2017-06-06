@@ -117,13 +117,6 @@ function highlightCurrentSection() {
 }
 
 /*
-	Gets the top coordinate of the section passed in as the parameter.
-*/
-function getTopOfSection(el, scroll) {
-	
-}
-
-/*
 	Animate scrolling to each section.
 	
 	Code from Valentin Sarychev.

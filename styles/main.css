@@ -12,7 +12,7 @@
     font-weight: 100;
     font-style: normal;
 }
-@@font-face {
+@font-face {
     font-family: "Avenir";
     src: url("fonts/Avenir/AvenirNextLTPro-Regular");
     font-weight: 300;
@@ -102,7 +102,7 @@ h1 .anchor {
 */
 
 /*
-	Default settings for text elements within the h2 tag.
+	Default settings for text elements within the p tag.
 */
 p {
     font-weight: 300;
@@ -140,7 +140,6 @@ header {
 .dates {
 	font-size: 42px;
 	text-align: center;
-	text-transform: none;
 	margin-top: 10px;
 	margin-bottom: 0px;
 }
@@ -151,7 +150,6 @@ header {
 .location {
 	font-size: 28px;
 	text-align: center;
-	text-transform: none;
 	margin-top: 0px;
 }
 
@@ -166,13 +164,14 @@ header {
 	font-size: 1em;
 	text-transform: none;
 	padding: 8px 21px;
-	width: auto;
+	width: 250px;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	transition: all 0.5s;
 	cursor: pointer;
 	display: block;
     margin: auto;
     margin-top: 3em;
+	vertical-align: center;
 }
 
 /*
@@ -205,14 +204,16 @@ header {
 */
 .infoButton:hover span {
 	padding-right: 25px;
+	transition: 0.5s;
 }
 
 /*
-	Chagne the look of the information button after the user has hovered over it.
+	Change the look of the information button after the user has hovered over it.
 */
 .infoButton:hover span:after {
 	opacity: 1;
 	right: 0;
+	transition: 0.5s;
 }
 
 /*
