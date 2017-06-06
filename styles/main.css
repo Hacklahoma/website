@@ -45,16 +45,18 @@
 	Default settings for the body of the webpage.
 */
 body {
-	background: #333333; /* Dark grey. */
+	background: #333333; /* Dark grey */
 	-webkit-font-smoothing: antialiased; /* Makes fonts smoother. Not necessary, just looks nice. */
-
+	
 	font-family: "Avenir"; /* Use Avenir by default, can change for certain elements. */
-    font-weight: 300;
-    font-size: 1.6em;
 	color: #FFF; /* Text color should be white by default, can change for certain elements. */
-
+	
 	overflow-x: hidden;
-    margin: 0 0%;
+	overflow-y: scroll;
+	
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
 }
 
 /*
@@ -62,7 +64,7 @@ body {
 */
 h1 {
 	font-family: "Futura";
-	font-size: 2em;
+	font-size: 4em;
     font-weight: 300;
     letter-spacing: .06em;
 	margin-top: .4em;
@@ -71,7 +73,7 @@ h1 {
 
 h3 {
     font-family: "Futura";
-	font-size: 1.2em;
+	font-size: 1.5em;
     font-weight: 300;
     letter-spacing: .06em;
 	margin-top: .4em;
@@ -90,16 +92,15 @@ h1 .bold, h3 .bold {
 
 /*
 	Default settings for text elements within the h1 tag used for main section headings.
-
-h1 .anchor {
+*/
+.anchor {
 	font-family: "Futura";
     font-weight: 300;
 	font-size: 4em;
 	margin-top: .4em;
 	margin-bottom: .4em;
-	padding-top: 3em;
+	padding-top: 60px;
 }
-*/
 
 /*
 	Default settings for text elements within the p tag.
@@ -121,8 +122,13 @@ p .bold {
 /*
 	The header of the main page. Contains the logo, date, location, and the information button.
 */
-header {
+#header {
 	text-align: center;
+	display: table;
+	width: 100vw;
+	height: auto;
+	margin-bottom: 3.125em;
+	position: relative;
 }
 
 /*
@@ -130,8 +136,10 @@ header {
 */
 .logo {
 	display: block;
+	margin-top: -2em;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: -3em;
 }
 
 /*
@@ -140,8 +148,9 @@ header {
 .dates {
 	font-size: 42px;
 	text-align: center;
-	margin-top: 10px;
-	margin-bottom: 0px;
+	text-transform: none;
+	margin-top: .625em;
+	margin-bottom: 0;
 }
 
 /*
@@ -150,7 +159,8 @@ header {
 .location {
 	font-size: 28px;
 	text-align: center;
-	margin-top: 0px;
+	text-transform: none;
+	margin: 0;
 }
 
 /*
@@ -164,14 +174,13 @@ header {
 	font-size: 1em;
 	text-transform: none;
 	padding: 8px 21px;
-	width: 250px;
+	width: auto;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	transition: all 0.5s;
 	cursor: pointer;
 	display: block;
     margin: auto;
-    margin-top: 3em;
-	vertical-align: center;
+    margin-top: 2em;
 }
 
 /*
@@ -204,31 +213,39 @@ header {
 */
 .infoButton:hover span {
 	padding-right: 25px;
-	transition: 0.5s;
 }
 
 /*
-	Change the look of the information button after the user has hovered over it.
+	Chagne the look of the information button after the user has hovered over it.
 */
 .infoButton:hover span:after {
 	opacity: 1;
 	right: 0;
-	transition: 0.5s;
+}
+
+/* 
+	Style for the nav bar wrapper.
+*/
+#navWrapper {
+	position: relative;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: 9999;
+	padding: 0 auto;
 }
 
 /*
 	Style for the nav bar.
 */
 #navBar {
-	left: 0;
-	right: 0;
-	z-index: 9999;
 	width: 100%;
-	height: 50px;
-	background-color: #000000;
+	height: 3.125em;
 	text-align: center;
+	background-color: #000000;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	transition: 0.5s;
+	z-index: 9999;
 }
 
 /*
@@ -238,10 +255,47 @@ header {
 	display: inline-block;
 	color: white;
 	text-align: center;
-	padding: 19px 14px;
+	padding: 18px 14px;
 	text-decoration: none;
 	transition: 0.5s;
-	height: 12px;
+	height: 0.75em;
+	vertical-align: center;
+}
+
+/*
+	Style for the links in the nav bar when the user hovers over them.
+*/
+#navBar a:hover {
+	background-color: #912929;
+	height: 0.75em;
+	transition: 0.5s;
+}
+
+/*
+	Style for the active links in the nav bar.
+*/
+#navBar a.active {
+	background-color: #912929;
+	height: 0.75em;
+	transition: 0.5s;
+}
+
+/*
+	Properties for the position of the nav bar when the user is not looking at the content pane. 
+*/
+.absolute {
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+/*
+	Properties for the position of the nav bar when the user is looking at the content pane.
+*/
+.fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
 }
 
 .underline {
@@ -253,45 +307,11 @@ header {
 }
 
 /*
-	Style for the links in the nav bar when the user hovers over them.
-*/
-#navBar a:hover {
-	background-color: #912929;
-	height: 12px;
-	transition: 0.5s;
-}
-
-/*
-	Style for the active links in the nav bar.
-*/
-#navBar a.active {
-	background-color: #912929;
-	height: 12px;
-	transition: 0.5s;
-}
-
-/*
-	Properties for the position of the nav bar when the user is not looking at the content pane.
-*/
-.absolute {
-	position: absolute;
-	bottom: 0;
-}
-
-/*
-	Properties for the position of the nav bar when the user is looking at the content pane.
-*/
-.fixed {
-	position: fixed;
-	top: 0;
-}
-
-/*
 	Style for the content container.
 */
 #contentPane {
-	position: absolute;
-	padding-top: 10px;
+	position: relative;
+	padding-top: 0.625em;
 	width: 100%;
 	height: auto;
 	overflow: auto;
@@ -359,7 +379,8 @@ header {
     margin: 0 0%;
     background-color: #FFF;
 	color: #000000;
-    padding: 2em 4%;
+    padding: 0 4%;
+    padding-bottom: 2em;
 }
 
 /*
@@ -386,47 +407,15 @@ header {
 /*
 	Style for the footer.
 */
-footer {
-	margin-top: 20px;
+#footer {
 	background-color: #4E4E4E;
 	left: 0;
 	right: 0;
 	width: 100%;
-	height: 160px;
+	height: 10em;
 	position: absolute;
-	bottom: 0;
+	bottom: -12.5em;
 	text-align: center;
-}
-
-/*
-	Style for the gear.
-*/
-.gear {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 50px;
-}
-
-/*
-	Style for the OU logo.
-*/
-.ouLogo {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 500px;
-}
-
-/*
-	Style for the MLH logo.
-*/
-.mlhLogo {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 500px;
-	height: 200px;
 }
 
 .socialMedia {
@@ -434,8 +423,8 @@ footer {
 	justify-content: space-between;
 	margin-left: auto;
 	margin-right: auto;
-	width: 350px;
-	height: 115px;
+	width: 21.875em;
+	height: 7.188em;
 }
 
 .facebook {

@@ -2,7 +2,7 @@
 // element with that href is hovered
 // give your 'a' class: noUnderline
 // give things you don't want underlined this class
-neverUnderline = "neverUnderline"
+neverUnderline = "neverUnderline";
 // you can hardcode the CSS here if you want instead of replacing the classes.
 
 $(function() {
