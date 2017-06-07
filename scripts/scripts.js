@@ -9,30 +9,31 @@
 // 
 
 // Execute fixNavBar() when the window is scrolled. 
-document.body.onscroll = function() {fixNavBar(); highlightCurrentSection();};
+document.body.onscroll = function() {highlightCurrentSection();};
 
 /*
 	Fixes the navBar at the top of the screen when the user's screen is 
 	in the content section, and at the bottom of the header when it isn't.
 */
-function fixNavBar() {
-	// The scroll position of the page.
-	var scrollTop = document.body.scrollTop;
+$(document).ready(function() {
+	var stickyNavTop = $('#navBar').offset().top;
 	
-	// The navBar element.
-	var navBar = document.getElementById("navBar");
+	var stickyNav = function() {
+		var scrollTop = $(window).scrollTop();
+		
+		if(scrollTop > stickyNavTop) {
+			$('#navBar').addClass('fixed');
+		} else {
+			$('#navBar').removeClass('fixed');
+		}
+	};
 	
-	// The height of the window, minus the height of the navBar.
-	var windowHeight = window.innerHeight - navBar.clientHeight;
+	stickyNav();
 	
-	// If the scroll position of the page is greater than the height of the window,
-	// fix the nav bar at the top. Otherwise, keep it at the bottom of the header.
-	if(scrollTop > windowHeight) {
-		navBar.className = "fixed";
-	} else {
-		navBar.className = "absolute";
-	}
-}
+	$(window).scroll(function() {
+		stickyNav();
+	});
+});
 
 /*
 	Highlights the link in the navbar of the section currently displayed on the

@@ -235,7 +235,6 @@ p .bold {
 	left: 0;
 	right: 0;
 	z-index: 9999;
-	padding: 0 auto;
 }
 
 /*
@@ -328,7 +327,6 @@ p .bold {
 #about {
 	width: 92%;
 	height: auto;
-	padding-bottom: auto;
     margin: 0 4%;
 }
 
@@ -419,6 +417,7 @@ p .bold {
 	position: absolute;
 	bottom: -12.5em;
 	text-align: center;
+	flex-shrink: 0;
 }
 
 .socialMedia {
