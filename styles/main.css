@@ -14,7 +14,7 @@
 }
 @font-face {
     font-family: "Avenir";
-    src: url("fonts/Avenir/AvenirNextLTPro-Regular");
+    src: url("fonts/Avenir/AvenirNextLTPro-Regular.otf");
     font-weight: 300;
     font-style: normal;
 }
@@ -126,9 +126,9 @@ p .bold {
 	text-align: center;
 	display: table;
 	width: 100vw;
-	height: auto;
-	margin-bottom: 3.125em;
+	height: 100vh;
 	position: relative;
+	overflow: scroll;
 }
 
 /*
@@ -181,6 +181,8 @@ p .bold {
 	display: block;
     margin: auto;
     margin-top: 2em;
+    margin-bottom: 4.125em;
+    position: relative;
 }
 
 /*
@@ -228,9 +230,10 @@ p .bold {
 */
 #navWrapper {
 	position: relative;
+	bottom: 3.125em;
+	width: 100%;
 	left: 0;
 	right: 0;
-	width: 100%;
 	z-index: 9999;
 	padding: 0 auto;
 }
