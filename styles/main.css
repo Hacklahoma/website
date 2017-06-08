@@ -246,7 +246,6 @@ p .bold {
 	text-align: center;
 	background-color: #000000;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	transition: 0.5s;
 	z-index: 9999;
 }
 
@@ -259,7 +258,6 @@ p .bold {
 	text-align: center;
 	padding: 18px 14px;
 	text-decoration: none;
-	transition: 0.5s;
 	height: 0.75em;
 	vertical-align: center;
 }
@@ -302,10 +300,12 @@ p .bold {
 
 .underline {
     border-bottom: 1px solid;
+    transition: 0s;
 }
 
 .noUnderline {
     border-bottom: 1px solid transparent;
+    transition: 0s;
 }
 
 /*
