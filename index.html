@@ -170,6 +170,32 @@
 				</div>
 			</footer>
 		</div>
+		
+		<!-- The form that pops up when the user clicks the info button. -->
+		<div id="infoFormPopup">
+			<div class="infoFormContent">
+				<span class="infoFormClose">&times;</span>
+				<h3 style="font-size: 2em;">Stay Updated With Hacklahoma</h3>
+				<hr color="#000" /><br />
+				<p style="color: #912929;">* Required</p><br />
+				<form action="getInfo.php" method="post">
+					<p style="font-size: 1.75em;">Name <span style="color: #912929;">*</span></p>
+					<input type="text" name="name" maxlength="70"><br /><br />
+					
+					<p style="font-size: 1.75em;">Email Address <span style="color: #912929;">*</span></p>
+					<input type="text" name="email" maxlength="100"><br /><br />
+					
+					<p style="font-size: 1.75em;">Phone Number</p>
+					<p style="font-size: 1em;">(FORMAT: xxx-xxx-xxxx)</p>
+					<input type="text" name="phoneNum" maxlength="12"><br /><br />
+					
+					<p style="font-size: 1.75em;">How did you hear about us? <span style="color: #912929;">*</span></p>
+					<input type="text" name="heardAboutUs" maxlength="256"><br /><br /><br />
+					
+					<input type="submit">
+				</form>
+			</div>
+		</div>
 
 		<!-- Link this page to the scripts that will run on the site. -->
 		<script src="scripts/scripts.js"></script>

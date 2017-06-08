@@ -113,3 +113,18 @@ $(document).on('click', 'a[href^="#"]', function(e) {
 	// Animated top scrolling
 	$('body, html').animate({scrollTop: pos}, 500);
 });
+
+/*
+	Opens a popup to get the user's name, email, phone number, and ask them
+	how they heard about us.
+*/
+$('.infoButton').on('click', function() {
+	$('#infoFormPopup').css("display", "block");
+});
+
+/*
+	Closes the information popup.
+*/
+$('.infoFormClose').on('click', function() {
+	$('#infoFormPopup').css("display", "none");
+});
