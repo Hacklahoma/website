@@ -118,13 +118,13 @@ $(document).on('click', 'a[href^="#"]', function(e) {
 	Opens a popup to get the user's name, email, phone number, and ask them
 	how they heard about us.
 */
-$('.infoButton').on('click', function() {
-	$('#infoFormPopup').css("display", "block");
-});
+// $('.infoButton').on('click', function() {
+	// $('#infoFormPopup').css("display", "block");
+// });
 
 /*
 	Closes the information popup.
 */
-$('.infoFormClose').on('click', function() {
-	$('#infoFormPopup').css("display", "none");
-});
+// $('.infoFormClose').on('click', function() {
+	// $('#infoFormPopup').css("display", "none");
+// });
