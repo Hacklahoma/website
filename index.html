@@ -26,35 +26,38 @@
 		<meta name="description" content="" /> <!-- TODO: CONTENT DESC HERE -->
 
 		<!-- Link the page to the style sheet. -->
-		<link rel="stylesheet" href="styles/main.css" />
+		<link rel="stylesheet" type="text/css" href="styles/main.css" />
+        <link rel="stylesheet" type="text/css" href="styles/mobile.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/menu-icon.css"/>
 
 		<!-- Install JQuery from Microsoft CDN. -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"> </script>
         <script src="scripts/hyperlinkhover.js"></script>
+
 	</head>
-	
+
 	<body>
 		<div id="holder" style="height: 100%; min-height: 100%; position: relative;">
 			<header id="header">
 				<!-- Displays the logo on the screen. -->
 				<img src="images/hacklahoma_artisticlogo_transparent.svg" class="logo" alt="Hacklahoma Logo" />
-	
+
 				<!-- Displays Hacklahoma under the logo. -->
 	            <h1 style="margin-top: 0;">HACKLAHOMA</h1>
-	
+
 				<!-- The dates that Hacklahoma takes place. -->
 				<p class="dates">March 3 - 4, 2018</p>
-	
+
 				<!-- The location that Hacklahoma takes place. -->
 				<p class=location>The University of Oklahoma</p>
-	
+
 				<!-- Button to sign up for more information. -->
 				<button class="infoButton" onclick="https://docs.google.com/forms/d/e/1FAIpQLSfqkYJzYlVIfscUe9CBn5JcGCRgj5dIHgnM-LjnPAWyZXhR4g/viewform?c=0&w=1"><span>Interested?</span></button> <!-- TODO: Set up information page. -->
 			</header>
-			
+
 			<!-- The nav bar.
 	                 TODO Mobile nav-->
-	        <div id="navWrapper">
+	        <div id="navWrapper" class="menuClosed">
 				<nav id="navBar" class="absolute">
 					<a href="#about" id="aboutLink">About</a>
 					<a href="#faq" id="faqLink">FAQ</a>
@@ -64,11 +67,26 @@
 					<a href="#footer" id="footerLink">Contact</a>
 				</nav>
 			</div>
-	
+
+            <input id="menu-trigger" class="menu-trigger" type="checkbox" autocomplete="off"/>
+            <label for="menu-trigger" id="menu-trigger-label">
+                <div class="menu-icon">
+                    <section class="menu-box">
+                        <div class="menu-icon hamburger" data-icon="hamburger">
+                            <span class="first"></span>
+                            <span class="second"></span>
+                            <span class="third"></span>
+                        </div>
+                    </section>
+                </div>
+            </label>
+
+            <script src="scripts/mobileMenu.js"></script>
+
 			<!-- The content pane of the main page. -->
 			<div id="contentPane">
 				<!-- TODO: Populate content. -->
-	
+
 				<!-- The About section. -->
 				<section id="about">
 					<h1 class="anchor" style="text-align: center;">About</h1>
@@ -81,7 +99,7 @@
 							in technology can attend a hackathon to <span class="bold">learn, build, and share</span> their creations over
 							the course of a weekend in a relaxed and welcoming atomosphere. <span class="bold">You don't have to be a
 							programmer</span> and you certainly <span class="bold">don't have to be majoring in computer science</span>. - MLH<br>
-	
+
 							<ul>
 								<li>Hacking as in "life hack," <span class="bold">not the exploitation kind</span></li>
 								<li><span class="bold">A career fair with a twist</span>; mentors and engineers from companies, talks, etc. (bring your resume!)</li>
@@ -105,7 +123,7 @@
 						</p>
 					</div>
 				</section>
-	
+
 				<!-- The FAQ section. -->
 				<section id="faq">
 					<h1 class="anchor" style="text-align: center;">FAQ</h1>
@@ -117,7 +135,7 @@
 						Aenean vitae mollis velit. Sed luctus nisl a risus lacinia, eget aliquam leo gravida. Fusce erat velit, aliquet eu odio et, viverra mollis tortor. Sed vitae vulputate turpis.
 					</p>
 				</section>
-	
+
 				<!-- The Agenda section. -->
 				<section id="agenda">
 					<h1 class="anchor" style="text-align: center;">Agenda</h1>
@@ -129,7 +147,7 @@
 						Aenean vitae mollis velit. Sed luctus nisl a risus lacinia, eget aliquam leo gravida. Fusce erat velit, aliquet eu odio et, viverra mollis tortor. Sed vitae vulputate turpis.
 					</p>
 				</section>
-	
+
 				<!-- The Sponsors section. -->
 				<section id="sponsors">
 					<h1 class="anchor" style="text-align: center">Sponsors</h1>
@@ -143,7 +161,7 @@
 						</p>
 					</div>
 				</section>
-	
+
 				<!-- The Judges section. -->
 				<section id="judges">
 					<h1 class="anchor" style="text-align: center;">Judges</h1>
@@ -156,14 +174,14 @@
 					</p>
 				</section>
 			</div>
-	
+
 			<!-- The footer of the main page. -->
 			<footer id="footer">
 				<!-- <img src="images/ou.png" class="ouLogo" />
 				<img src="images/mlh.png" class="mlhLogo" />
 				<img src="images/gear.png" class="gear" /> -->
 				<p style="font-size: 22px;">team@hacklahoma.org</p>
-	
+
 				<div class="socialMedia">
 					<a class="neverUnderline" href="https://www.facebook.com/Hacklahoma/"><img src="images/facebook.jpg" alt="Facebook" /></a>
 					<a class="neverUnderline" href="https://twitter.com/hacklahoma"><img src="images/twitter.jpg" alt="Twitter" /></a>
@@ -171,7 +189,7 @@
 				</div>
 			</footer>
 		</div>
-		
+
 		<!-- The form that pops up when the user clicks the info button. -->
 		<div id="infoFormPopup">
 			<div class="infoFormContent">
@@ -182,17 +200,17 @@
 				<form action="getInfo.php" method="post">
 					<p style="font-size: 1.75em;">Name <span style="color: #912929;">*</span></p>
 					<input type="text" name="name" maxlength="70"><br /><br />
-					
+
 					<p style="font-size: 1.75em;">Email Address <span style="color: #912929;">*</span></p>
 					<input type="text" name="email" maxlength="100"><br /><br />
-					
+
 					<p style="font-size: 1.75em;">Phone Number</p>
 					<p style="font-size: 1em;">(FORMAT: xxx-xxx-xxxx)</p>
 					<input type="text" name="phoneNum" maxlength="12"><br /><br />
-					
+
 					<p style="font-size: 1.75em;">How did you hear about us? <span style="color: #912929;">*</span></p>
 					<input type="text" name="heardAboutUs" maxlength="256"><br /><br /><br />
-					
+
 					<input type="submit">
 				</form>
 			</div>
