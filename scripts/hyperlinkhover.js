@@ -3,6 +3,7 @@
 // give your 'a' class: noUnderline
 // give things you don't want underlined this class
 neverUnderline = "neverUnderline";
+active = "active";
 // you can hardcode the CSS here if you want instead of replacing the classes.
 
 $(function() {
@@ -12,6 +13,6 @@ $(function() {
         $('a[href="' + href + '"][class!="' + neverUnderline + '"]').addClass("underline").removeClass("noUnderline");
     }, function() {
         // on mouseout, change the class back
-        $('a[class!="' + neverUnderline + '"]').addClass("noUnderline").removeClass("underline");
+        $('a[class!="' + neverUnderline + '"]:not([class*="' + active + '"])').removeClass("underline");
     });
 });

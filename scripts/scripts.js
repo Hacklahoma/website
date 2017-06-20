@@ -58,34 +58,76 @@ $(document).ready(function($) {
      * We use the scroll functionality again, some array creation and
      * manipulation, class adding and class removing, and conditional testing
      */
+    
+    // Get all links with div IDs that end in "Link" (should be only nav bar links).
     var aChildren = $("a[id$='Link']").toArray();
 
-    var aArray = []; // create the empty aArray
+	// Create the empty aArray.
+    var aArray = [];
+    
+    // Get the href attributes of those links.
     for(var i = 0; i < aChildren.length; i++) {
     	var aChild = aChildren[i];
     	var ahref = $(aChild).attr('href');
     	aArray.push(ahref);
-    } // this for loop fills the aArray with attribute href values
+    }
 
+	// When the user scrolls
     $(window).scroll(function() {
-    	var windowPos = $(window).scrollTop(); // get the offset of the window from the top of the page
-    	var windowHeight = $(window).height(); // get the height of the window
+    	// Get the offset of the window from the top of the page.
+    	var windowPos = $(window).scrollTop();
+    	
+    	// Get the height of the window.
+    	var windowHeight = $(window).height();
+    	
+    	// Can we delete this?
     	var docHeight = $(document).height();
 
+		// Loop through all nav bar links.
     	for(var i = 0; i < aArray.length; i++) {
+    		// Get the link from the array.
     		var theID = aArray[i];
-    		var divPos = $(theID).offset().top; // get the offset of the div from the top of the page
-    		divPos = divPos - 50; // fix for navBar height
-    		var divHeight = $(theID).height(); // get the height of the div in question
-    		divHeight = divHeight + 50; // correction for our previous adjustment so that the end of the div is calculated properly
+    		
+    		// Get the offset of the div from the top of the page.
+    		var divPos = $(theID).offset().top;
+    		
+    		// Fix for navBar height.
+    		divPos = divPos - 50;
+    		
+    		// Get the height of the div in question.
+    		var divHeight = $(theID).height();
+    		
+    		// Correction for our previous adjustment so that the end of the div is calculated properly.
+    		divHeight = divHeight + 50;
+    		
+    		// $('#test').text("scroll: " + windowPos + " win height: " + windowHeight + " doc height: " + docHeight);
 
-    		if(windowPos >= divPos && windowPos < (divPos + divHeight)) {
-    			$("a[href=" + theID + "]").addClass("active");
-    			$("a[href=" + theID + "]").addClass("underline");
-    		} else {
-    			$("a[href=" + theID + "]").removeClass("active");
+			/*
+				If the user has scrolled to the bottom of the screen, highlight and underline the contact link in the nav bar
+				and remove the highlight and underline from all the other links.
+				
+				Otherwise, remove the highlight and underline from the contact link in the nav bar. Futhermore, if the view port
+				is between the top and bottom of the div, highlight and underline its nav bar link. Remove the highlight and underline
+				from all the other links whose corresponding divs are not shown on the screen.
+			*/
+			if((windowPos + windowHeight) == docHeight) {
+				$("a[href=" + theID + "]").removeClass("active");
     			$("a[href=" + theID + "]").removeClass("underline");
-    		}
+				
+				$("a[href='#footer']").addClass("active");
+				$("a[href='#footer']").addClass("underline");
+			} else {
+				$("a[href='#footer']").removeClass("active");
+				$("a[href='#footer']").removeClass("underline");
+				
+    			if(windowPos >= divPos && windowPos < (divPos + divHeight)) {
+    				$("a[href=" + theID + "]").addClass("active");
+    				$("a[href=" + theID + "]").addClass("underline");
+    			} else {
+    				$("a[href=" + theID + "]").removeClass("active");
+    				$("a[href=" + theID + "]").removeClass("underline");
+    			}
+			}
     	}
     });
 });
