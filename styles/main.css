@@ -338,6 +338,7 @@ p .bold {
 	width: 92%;
 	height: auto;
     margin: 0 4%;
+    overflow: hidden;
 }
 
 /*
@@ -347,8 +348,7 @@ p .bold {
 	width: 50%;
 	height: auto;
 	float: right;
-    /* Usually you want to clear your floats, or at least one of them. */
-    clear: both;
+    clear: right;
 	margin-bottom: 4em;
 	padding-right: 2em;
 }
@@ -359,8 +359,8 @@ p .bold {
 #missionStatement {
 	width: 50%;
 	height: auto;
-	margin-bottom: 4em;
-	overflow: hidden;
+	float: left;
+    clear: left;
 	padding-left: 2em;
 }
 
@@ -368,6 +368,7 @@ p .bold {
 	Style for the FAQ section.
 */
 #faq {
+	margin-top: 4em;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
