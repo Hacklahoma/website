@@ -421,23 +421,45 @@ p .bold {
 */
 #sponsors {
 	display: block;
-	width: 92%;
-    margin: 0 0%;
-    background-color: #FFF;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 2em;
+	height: auto;
+	width: 100%;
+	background-color: #FFFFFF;
 	color: #000000;
-    padding: 0 4%;
-    padding-bottom: 2em;
 }
 
 /*
 	Content wrapper for the Sponsors section.
 */
 .sponsorsLogos {
-	display: block;
-	width: 100%;
-	background-color: #FFF;
-	color: #000000;
-    padding: 8em 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+	-webkit-flex-flow: row wrap;
+	justify-content: space-around;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*
+	Style for the each sponsor's logo.
+	
+	TODO: Might have to change this to be specific for each sponsor.
+*/
+.sponsorLogo {
+	flex: 0 0 auto;
+	margin: auto 2em;
+}
+
+.sponsorLogo img {
+	width: auto;
+	height: auto;
 }
 
 /*
