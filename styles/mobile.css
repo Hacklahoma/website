@@ -36,24 +36,6 @@
          text-align: left;
      }
 
-     #explain {
-         width: calc(100% - 4em);
-         margin: 2em;
-         padding: 0;
-     }
-
-     #missionStatement {
-         width: calc(100% - 4em);
-         margin: 2em;
-         padding: 0;
-     }
-
-     #faq {
-         width: calc(100% - 4em);
-         margin: 2em;
-         padding: 0;
-     }
-
      #agenda {
          width: calc(100% - 4em);
          margin: 2em;

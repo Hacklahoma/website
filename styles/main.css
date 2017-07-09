@@ -1,6 +1,5 @@
 /*
    The main style sheet for the Hacklahoma website.
-   TODO reduce use of absolute (px/pt) measurements
 */
 
 /*
@@ -335,40 +334,48 @@ p .bold {
 	Style for the About section.
 */
 #about {
-	width: 92%;
+	width: 100%;
 	height: auto;
     margin: 0 4%;
     overflow: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2em;
+    margin-top: 4em;
 }
 
 /*
-	Style for the section explaining what a hackathon is.
+	Style for the content of the About section.
 */
-#explain {
-	width: 50%;
-	height: auto;
-	float: right;
-    clear: right;
-	margin-bottom: 4em;
-	padding-right: 2em;
+#aboutContent {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+	-webkit-flex-flow: row wrap;
+	justify-content: space-between;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /*
-	Style for the section explaining our mission statement.
+	Style for each item of the About section.
 */
-#missionStatement {
-	width: 50%;
+#aboutItem {
+	flex: 0 0 40%;
 	height: auto;
-	float: left;
-    clear: left;
-	padding-left: 2em;
+	margin: auto;
 }
+
 
 /*
 	Style for the FAQ section.
 */
 #faq {
-	margin-top: 4em;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -377,6 +384,7 @@ p .bold {
 	width: 100%;
 	background-color: #FFFFFF;
 	color: #000000;
+	text-align: center;
 }
 
 /*
@@ -391,7 +399,7 @@ p .bold {
 	flex-wrap: wrap;
 	-webkit-flex-flow: row wrap;
 	justify-content: space-around;
-	width: 75%;
+	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -472,7 +480,9 @@ p .bold {
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
-	margin-bottom: 8em;
+	margin-bottom: 5em;
+	height: auto;
+	overflow: hidden;
 }
 
 /*
@@ -489,7 +499,7 @@ p .bold {
 	bottom: -15em;
 	text-align: center;
 	flex-shrink: 0;
-	padding-top: 3.5em;
+	/*padding-top: 3.5em;*/
 }
 
 /*
@@ -605,4 +615,21 @@ p .bold {
 #infoFormPopup input[type=submit]:hover {
 	background-color: #000000;
 	cursor: pointer;
+}
+
+#mlh-trust-badge {
+	display: block;
+	max-width: 100px;
+	min-width: 60px;
+	position: fixed;
+	right: 20px;
+	top: 0;
+	width: 10%;
+	z-index: 10000;
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+}
+
+#mlh-trust-badge:hover {
+	max-width: 110px;
 }
