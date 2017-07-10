@@ -35,6 +35,7 @@ $(document).ready(function() {
 	$(window).on({
 		scroll: function() {
 			stickyNav();
+            tracesScroll(); // in traces.js  Perf is better with one onscroll
 		}, resize: function() {
 			if( $('#navBar').attr('class') == "absolute fixed") {
 				// do nothing

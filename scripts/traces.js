@@ -8,11 +8,21 @@ var s;
 
 var waypoints = new Array();
 
+var traces;
+var traceChildren;
+var dots;
+
+var scrollTop;
+var height;
+var windowHeight;
+var target = 0;
+
 // formatting constants
 const dotSize = 1.6; // dot radius in px
 const traceWidth = 1; // trace line width in px
 const lanes = 5; // number of parallel trace lanes (may not all be filled)
 const spacing = 10; // spacing multiplier (makes lanes and nodes farther apart)
+const drawCompMult = 1.01; // adds a bit of length to straight segments, so they render better.  set to 1 to be normal.
 
 // pattern constants - increasing mults makes more likely, increasing thresholds makes less likely
 const nodeMult = 1.3 // likelihood of a node spawning, in a vacuum
@@ -63,40 +73,40 @@ function getCoords(column, row, start, orientation) {
 function drawLineSegment(start, orientation, direction) {
     var end = new coord(0, 0);
     if (orientation === 2) {
-        end.y = start.y + spacing;
+        end.y = start.y + spacing * drawCompMult;
         if (direction === 2) {
             end.x = start.x;
         } else if (direction === 1) {
-            end.x = start.x + spacing;
+            end.x = start.x + spacing * drawCompMult;
         } else if (direction === 3) {
-            end.x = start.x - spacing;
+            end.x = start.x - spacing * drawCompMult;
         }
     } else if (orientation === 1) {
         if (direction === 2) {
-            end.x = start.x + spacing;
-            end.y = start.y + spacing;
+            end.x = start.x + spacing * drawCompMult;
+            end.y = start.y + spacing * drawCompMult;
         } else if (direction === 1) {
-            end.x = start.x + spacing;
+            end.x = start.x + spacing * drawCompMult;
             end.y = start.y;
         } else if (direction === 3) {
             end.x = start.x;
-            end.y = start.y + spacing;
+            end.y = start.y + spacing * drawCompMult;
         }
     } else if (orientation === 3) {
         if (direction === 2) {
-            end.x = start.x - spacing;
-            end.y = start.y + spacing;
+            end.x = start.x - spacing * drawCompMult;
+            end.y = start.y + spacing * drawCompMult;
         } else if (direction === 1) {
             end.x = start.x;
-            end.y = start.y + spacing;
+            end.y = start.y + spacing * drawCompMult;
         } else if (direction === 3) {
-            end.x = start.x - spacing;
+            end.x = start.x - spacing * drawCompMult;
             end.y = start.y;
         }
     } else {
         console.log("Orientation: " + orientation + ", Direction: " + direction + ", wth did you do???");
     }
-    s.line(start.x, start.y, end.x, end.y).attr({stroke: traceColor, strokeWidth: traceWidth});
+    s.line(start.x, start.y, end.x, end.y).attr({stroke: traceColor, strokeWidth: traceWidth}).appendTo(traces);
 }
 
 // Look on my pyramid and despair!
@@ -104,7 +114,7 @@ function drawLineSegment(start, orientation, direction) {
 // This draws traces at random given a starting coordinate, maximum length, and orientation
 // Orientation 1 is 45 degrees clockwise from right, 2 is down, 3 is 45 degrees clockwise from down (artifact of old trig stuff)
 function drawTraces(start, length, orientation, topRow) {
-    var dotArray = createDotArray(lanes, Math.floor(length / spacing), topRow);
+    var dotArray = createDotArray(lanes, Math.floor(length / spacing) + 1, topRow);
     var bottomRow = dotArray[dotArray.length - 1];
     console.log(dotArray);
     for (var column = 0; column < dotArray.length; column++) {
@@ -153,7 +163,7 @@ function drawTraces(start, length, orientation, topRow) {
             var currentCoords = getCoords(column, row, start, orientation);
             var drawn = 0;
             if (dotArray[column][row] == 2) {
-                s.circle(currentCoords.x, currentCoords.y, dotSize).attr({fill: dotColor});
+                s.circle(currentCoords.x, currentCoords.y, dotSize).attr({fill: dotColor}).appendTo(dots);
             } else if (dotArray[column][row] >= 2) {
                 //s.circle(currentCoords.x, currentCoords.y, 3).attr({fill: "#8df"});
             } else if (dotArray[column][row] == 1) {
@@ -165,14 +175,23 @@ function drawTraces(start, length, orientation, topRow) {
     return dotArray;
 }
 
-$(document).ready(function() {
-    console.log("The cavalry's here!");
+function setup() {
+    height = document.body.scrollHeight;
+    windowHeight = $(window).height();
+
     s = Snap("#traces");
 
-    var logo = $("#logo");
-    waypoints.push(new coord(logo.offset().left + logo.width() * .4 - lanes * spacing / 2, logo.offset().top + logo.innerHeight() * .6));
+    traces = s.group();
+    dots = s.group();
+
+    waypoints.push(new coord(300, 100));
     waypoints.push(new coord(60, waypoints[0].y + 600));
     waypoints.push(new coord(120, 1500));
+    waypoints.push(new coord(20, 2000));
+}
+
+$(document).ready(function() {
+    setup();
 
     var length;
     var intermediateCoord;
@@ -182,18 +201,37 @@ $(document).ready(function() {
     for (var i = 0; i < waypoints.length - 1; i++) {
         s.circle(waypoints[i + 1].x, waypoints[i + 1].y, 3).attr({fill: emphasizedDotColor});
 
-        length = waypoints[i + 1].y - waypoints[i].y - Math.abs(waypoints[i + 1].x - waypoints[i].x) + spacing;
+        length = waypoints[i + 1].y - waypoints[i].y - Math.abs(waypoints[i + 1].x - waypoints[i].x);
 
         tempArray = drawTraces(new coord(waypoints[i].x, waypoints[i].y), length, 2, lastEnds);
         lastEnds = [tempArray[0][tempArray[0].length - 1], tempArray[1][tempArray[0].length - 1], tempArray[2][tempArray[0].length - 1], tempArray[3][tempArray[0].length - 1], tempArray[4][tempArray[0].length - 1]];
 
-        intermediateCoord = new coord(waypoints[i].x, waypoints[i].y + length - spacing);
+        intermediateCoord = new coord(waypoints[i].x, waypoints[i].y + length);
         if (waypoints[i + 1].x > waypoints[i].x) {
-            tempArray = drawTraces(intermediateCoord, (waypoints[i + 1].x - waypoints[i].x) + spacing, 1, lastEnds);
+            tempArray = drawTraces(intermediateCoord, (waypoints[i + 1].x - waypoints[i].x), 1, lastEnds);
         } else if (waypoints[i + 1].x < waypoints[i].x) {
-            tempArray = drawTraces(intermediateCoord, (waypoints[i].x - waypoints[i + 1].x) + spacing, 3, lastEnds);
+            tempArray = drawTraces(intermediateCoord, (waypoints[i].x - waypoints[i + 1].x), 3, lastEnds);
         }
 
         lastEnds = [tempArray[0][tempArray[0].length - 1], tempArray[1][tempArray[0].length - 1], tempArray[2][tempArray[0].length - 1], tempArray[3][tempArray[0].length - 1], tempArray[4][tempArray[0].length - 1]];
     }
+
+    traceChildren = traces.children();
 });
+
+function tracesScroll () {
+    scrollTop = document.body.scrollTop;
+    last = target;
+    target = scrollTop + windowHeight * (scrollTop / (height - windowHeight));
+
+    for (var i = 0; i < traceChildren.length; i++) {
+        childY = traceChildren[i].getBBox().y;
+        if ((childY > last && childY < target) || (childY < last && childY > target)) {
+            if (childY <= target) {
+                traceChildren[i].animate({stroke: "#0f0"}, 5);
+            } else {
+                traceChildren[i].animate({stroke: "#fff"}, 5);
+            }
+        }
+    }
+}
