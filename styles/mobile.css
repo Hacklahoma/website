@@ -9,8 +9,8 @@
 
      #navWrapper {
          text-align: left;
+         height: 100%;
          width: 60%;
-         padding-left: 20%;
          top: 0;
          right: auto;
          position: fixed !important;

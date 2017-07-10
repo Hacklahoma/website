@@ -32,16 +32,19 @@
         <link rel="stylesheet" type="text/css" href="styles/menu-icon.css"/>
 
 		<!-- Install JQuery from Microsoft CDN. -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"> </script>
+		<script type="text/javascript" src="scripts/jquery.min.js"> </script>
+        <script src="scripts/snap.svg.js"></script>
         <script src="scripts/hyperlinkhover.js"></script>
+        <script src="scripts/traces.js"></script>
 
 	</head>
 
 	<body>
+        <svg id="traces"></svg>
 		<div id="holder" style="height: 100%; min-height: 100%; position: relative;">
 			<header id="header">
 				<!-- Displays the logo on the screen. -->
-				<img src="images/hacklahoma_artisticlogo_transparent.svg" class="logo" alt="Hacklahoma Logo" />
+				<img src="images/hacklahoma_artisticlogo_transparent.svg" class="logo" id="logo" alt="Hacklahoma Logo" />
 
 				<!-- Displays Hacklahoma under the logo. -->
 				<h1 id="title" style="margin-top: 0;">HACKLAHOMA</h1>
@@ -62,12 +65,12 @@
 	                 TODO Mobile nav-->
 	        <div id="navWrapper" class="menuClosed">
 				<nav id="navBar" class="absolute">
-					<a href="#about" id="aboutLink">About</a>
-					<a href="#faq" id="faqLink">FAQ</a>
-					<a href="#agenda" id="agendaLink">Agenda</a>
-					<a href="#sponsors" id="sponsorsLink">Sponsors</a>
-					<a href="#judges" id="judgesLink">Judges</a>
-					<a href="#footer" id="footerLink">Contact</a>
+					<a href="#about" id="aboutLink" class="neverUnderline">About</a>
+					<a href="#faq" id="faqLink" class="neverUnderline">FAQ</a>
+					<a href="#agenda" id="agendaLink" class="neverUnderline">Agenda</a>
+					<a href="#sponsors" id="sponsorsLink" class="neverUnderline">Sponsors</a>
+					<a href="#judges" id="judgesLink" class="neverUnderline">Judges</a>
+					<a href="#footer" id="footerLink" class="neverUnderline">Contact</a>
 				</nav>
 			</div>
 
