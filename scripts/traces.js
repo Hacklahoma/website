@@ -25,11 +25,11 @@ const spacing = 10; // spacing multiplier (makes lanes and nodes farther apart)
 const drawCompMult = 1.01; // adds a bit of length to straight segments, so they render better.  set to 1 to be normal.
 
 // pattern constants - increasing mults makes more likely, increasing thresholds makes less likely
-const nodeMult = 1.3 // likelihood of a node spawning, in a vacuum
-const chainMult = 0.9 // additional likelihood of a node spawning if there is another node above it
-const linearThreshold = 0.1 // threshold for a line to be drawn from a node to the one below it
-const rightThreshold = 0.8 // threshold for a line to be drawn from a node to the one below and to the right of it
-const leftThreshold = 0.8 // threshold for a line to be drawn from a node the one below and to the left of it
+const nodeMult = 1.34 // likelihood of a node spawning, in a vacuum
+const chainMult = 0.86 // additional likelihood of a node spawning if there is another node above it
+const linearThreshold = 0.0 // threshold for a line to be drawn from a node to the one below it
+const rightThreshold = 0.7 // threshold for a line to be drawn from a node to the one below and to the right of it
+const leftThreshold = 0.7 // threshold for a line to be drawn from a node the one below and to the left of it
 
 // colors
 const dotColor = "#fff";
@@ -68,39 +68,43 @@ function getCoords(column, row, start, orientation) {
     return currentCoords;
 }
 
+function drawLineSegment(start, orientation, direction) {
+    drawLine(start, orientation, direction, spacing * drawCompMult);
+}
+
 // These bastardized square segments with trigonometric rotation is really annoying
 // If you know the (probably obvious) solution to this, please update this code and let me know.
-function drawLineSegment(start, orientation, direction) {
+function drawLine(start, orientation, direction, length) {
     var end = new coord(0, 0);
     if (orientation === 2) {
-        end.y = start.y + spacing * drawCompMult;
+        end.y = start.y + length;
         if (direction === 2) {
             end.x = start.x;
         } else if (direction === 1) {
-            end.x = start.x + spacing * drawCompMult;
+            end.x = start.x + length;
         } else if (direction === 3) {
-            end.x = start.x - spacing * drawCompMult;
+            end.x = start.x - length;
         }
     } else if (orientation === 1) {
         if (direction === 2) {
-            end.x = start.x + spacing * drawCompMult;
-            end.y = start.y + spacing * drawCompMult;
+            end.x = start.x + length;
+            end.y = start.y + length;
         } else if (direction === 1) {
-            end.x = start.x + spacing * drawCompMult;
+            end.x = start.x + length;
             end.y = start.y;
         } else if (direction === 3) {
             end.x = start.x;
-            end.y = start.y + spacing * drawCompMult;
+            end.y = start.y + length;
         }
     } else if (orientation === 3) {
         if (direction === 2) {
-            end.x = start.x - spacing * drawCompMult;
-            end.y = start.y + spacing * drawCompMult;
+            end.x = start.x - length;
+            end.y = start.y + length;
         } else if (direction === 1) {
             end.x = start.x;
-            end.y = start.y + spacing * drawCompMult;
+            end.y = start.y + length;
         } else if (direction === 3) {
-            end.x = start.x - spacing * drawCompMult;
+            end.x = start.x - length;
             end.y = start.y;
         }
     } else {
@@ -115,43 +119,42 @@ function drawLineSegment(start, orientation, direction) {
 // Orientation 1 is 45 degrees clockwise from right, 2 is down, 3 is 45 degrees clockwise from down (artifact of old trig stuff)
 function drawTraces(start, length, orientation, topRow) {
     var dotArray = createDotArray(lanes, Math.floor(length / spacing) + 1, topRow);
-    var bottomRow = dotArray[dotArray.length - 1];
-    console.log(dotArray);
     for (var column = 0; column < dotArray.length; column++) {
         for (var row = 0; row < dotArray[0].length - 1; row++) {
+            var currentCoords = getCoords(column, row, start, orientation);
+            if (dotArray[column][row] === 1) {
 
-            var drawn = 0;
-            if (dotArray[column][row] > 0) {
-                var currentCoords = getCoords(column, row, start, orientation);
                 // debug circles: s.circle(currentCoords.x, currentCoords.y, dotSize).attr({fill: "#ddd"});
+
                 // if there is a dot below this one, maybe draw a trace to it
-                if (dotArray[column][row + 1]) {
-                    if (Math.random() > linearThreshold) {
-                        drawLineSegment(currentCoords, orientation, 2);
-                        dotArray[column][row] = dotArray[column][row] + 1;
-                        dotArray[column][row + 1] = dotArray[column][row + 1] + 1;
-                        drawn = 2;
-                    }
+                var j = 1;
+                while (dotArray[column][row + j] === 1 && Math.random() > linearThreshold) {
+                    dotArray[column][row + j - 1] = dotArray[column][row + j - 1] + 1;
+                    dotArray[column][row + j] = dotArray[column][row + j] + 1;
+                    j++;
                 }
+                if (j > 1) {
+                    drawLine(currentCoords, orientation, 2, spacing * (j - 1));
+                }
+
+            } else if (dotArray[column][row] > 1 && dotArray[column][row + 1] < 1) {
                 // if there is a dot below and to the right of this one, maybe draw a trace to it
                 if (column + 1 < dotArray.length && dotArray[column + 1][row + 1]) {
-                    if (Math.random() > rightThreshold + .1 * drawn) {
+                    if (Math.random() > rightThreshold) {
                         drawLineSegment(currentCoords, orientation, 1);
                         dotArray[column][row] = dotArray[column][row] + 1;
                         dotArray[column + 1][row + 1] = dotArray[column + 1][row + 1] + 1;
-                        // drawn = 2;
-                    }
-                }
-                // if there is a dot below and to the left of this one, maybe draw a trace to it
-                if (column - 1 > 0 && dotArray[column - 1][row + 1]) {
-                    if (Math.random() > leftThreshold + .1 * drawn) {
-                        drawLineSegment(currentCoords, orientation, 3);
-                        dotArray[column][row] = dotArray[column][row] + 1;
-                        dotArray[column - 1][row + 1] = dotArray[column - 1][row + 1] + 1;
-                        // drawn = 2;
                     }
                 }
 
+                // if there is a dot below and to the left of this one, maybe draw a trace to it
+                if (column - 1 > 0 && dotArray[column - 1][row + 1]) {
+                    if (Math.random() > leftThreshold) {
+                        drawLineSegment(currentCoords, orientation, 3);
+                        dotArray[column][row] = dotArray[column][row] + 1;
+                        dotArray[column - 1][row + 1] = dotArray[column - 1][row + 1] + 1;
+                    }
+                }
             }
         }
     }
@@ -159,19 +162,19 @@ function drawTraces(start, length, orientation, topRow) {
     // draw trace dots (if they have exactly one connection)
     // tracked by incrementing members of dotArray when drawing the random traces
     for (var column = 0; column < dotArray.length; column++) {
-        for (var row = 0; row < dotArray[0].length - 1; row++) {
+        for (var row = 1; row < (dotArray[0].length - 1); row++) {
             var currentCoords = getCoords(column, row, start, orientation);
             var drawn = 0;
             if (dotArray[column][row] == 2) {
                 s.circle(currentCoords.x, currentCoords.y, dotSize).attr({fill: dotColor}).appendTo(dots);
-            } else if (dotArray[column][row] >= 2) {
-                //s.circle(currentCoords.x, currentCoords.y, 3).attr({fill: "#8df"});
+            } else if (dotArray[column][row] > 2) {
+                //s.circle(currentCoords.x, currentCoords.y, 2).attr({fill: "#8df"}); // blue
             } else if (dotArray[column][row] == 1) {
-                //s.circle(currentCoords.x, currentCoords.y, 3).attr({fill: "#cc0"});
+                //s.circle(currentCoords.x, currentCoords.y, 2).attr({fill: "#cc0"}); // yellow
             }
         }
     }
-
+    // console.log(dotArray);
     return dotArray;
 }
 
@@ -204,7 +207,8 @@ $(document).ready(function() {
         length = waypoints[i + 1].y - waypoints[i].y - Math.abs(waypoints[i + 1].x - waypoints[i].x);
 
         tempArray = drawTraces(new coord(waypoints[i].x, waypoints[i].y), length, 2, lastEnds);
-        lastEnds = [tempArray[0][tempArray[0].length - 1], tempArray[1][tempArray[0].length - 1], tempArray[2][tempArray[0].length - 1], tempArray[3][tempArray[0].length - 1], tempArray[4][tempArray[0].length - 1]];
+        // stellar work here vvv
+        lastEnds = [tempArray[0][tempArray[0].length - 1] - 1, tempArray[1][tempArray[0].length - 1] - 1, tempArray[2][tempArray[0].length - 1] - 1, tempArray[3][tempArray[0].length - 1] - 1, tempArray[4][tempArray[0].length - 1] - 1];
 
         intermediateCoord = new coord(waypoints[i].x, waypoints[i].y + length);
         if (waypoints[i + 1].x > waypoints[i].x) {
@@ -213,10 +217,11 @@ $(document).ready(function() {
             tempArray = drawTraces(intermediateCoord, (waypoints[i].x - waypoints[i + 1].x), 3, lastEnds);
         }
 
-        lastEnds = [tempArray[0][tempArray[0].length - 1], tempArray[1][tempArray[0].length - 1], tempArray[2][tempArray[0].length - 1], tempArray[3][tempArray[0].length - 1], tempArray[4][tempArray[0].length - 1]];
+        lastEnds = [tempArray[0][tempArray[0].length - 1] - 1, tempArray[1][tempArray[0].length - 1] - 1, tempArray[2][tempArray[0].length - 1] - 1, tempArray[3][tempArray[0].length - 1] - 1, tempArray[4][tempArray[0].length - 1] - 1];
     }
 
     traceChildren = traces.children();
+    dotChildren = dots.children();
 });
 
 function tracesScroll () {
@@ -227,9 +232,11 @@ function tracesScroll () {
     for (var i = 0; i < traceChildren.length; i++) {
         childY = traceChildren[i].getBBox().y;
         if (childY <= target && childY > last) {
-            traceChildren[i].animate({stroke: "#0f0"}, 0);
+            traceChildren[i].animate({stroke: "#0f0"}, 300);
+            //dotChildren[i].animate({stroke: "#0f0"}, 300);
         } else if (childY < last && childY > target) {
-            traceChildren[i].animate({stroke: "#fff"}, 0);
+            traceChildren[i].animate({stroke: "#fff"}, 300);
+            //dotChildren[i].animate({stroke: "#fff"}, 300);
         }
     }
 }
