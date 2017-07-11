@@ -226,12 +226,10 @@ function tracesScroll () {
 
     for (var i = 0; i < traceChildren.length; i++) {
         childY = traceChildren[i].getBBox().y;
-        if ((childY > last && childY < target) || (childY < last && childY > target)) {
-            if (childY <= target) {
-                traceChildren[i].animate({stroke: "#0f0"}, 5);
-            } else {
-                traceChildren[i].animate({stroke: "#fff"}, 5);
-            }
+        if (childY <= target && childY > last) {
+            traceChildren[i].animate({stroke: "#0f0"}, 0);
+        } else if (childY < last && childY > target) {
+            traceChildren[i].animate({stroke: "#fff"}, 0);
         }
     }
 }

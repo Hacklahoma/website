@@ -313,6 +313,8 @@ p .bold {
 */
 .fixed {
 	position: fixed;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
 	top: 0;
 	left: 0;
 }
