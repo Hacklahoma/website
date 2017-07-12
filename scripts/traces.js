@@ -110,7 +110,8 @@ function drawLine(start, orientation, direction, length) {
     } else {
         console.log("Orientation: " + orientation + ", Direction: " + direction + ", wth did you do???");
     }
-    s.line(start.x, start.y, end.x, end.y).attr({stroke: traceColor, strokeWidth: traceWidth}).appendTo(traces);
+    length = Math.sqrt(Math.pow(start.x - end.x, 2) + Math.pow(start.y - end.y, 2));
+    s.line(start.x, start.y, end.x, end.y).attr({stroke: traceColor, strokeWidth: traceWidth, "stroke-dasharray": length, "stroke-dashoffset": length, "length": length}).appendTo(traces);
 }
 
 // Look on my pyramid and despair!
@@ -166,7 +167,7 @@ function drawTraces(start, length, orientation, topRow) {
             var currentCoords = getCoords(column, row, start, orientation);
             var drawn = 0;
             if (dotArray[column][row] == 2) {
-                s.circle(currentCoords.x, currentCoords.y, dotSize).attr({fill: dotColor}).appendTo(dots);
+                s.circle(currentCoords.x, currentCoords.y, 0).attr({fill: dotColor}).appendTo(dots);
             } else if (dotArray[column][row] > 2) {
                 //s.circle(currentCoords.x, currentCoords.y, 2).attr({fill: "#8df"}); // blue
             } else if (dotArray[column][row] == 1) {
@@ -202,7 +203,10 @@ $(document).ready(function() {
     var length;
     var intermediateCoord;
     var tempArray;
-    var lastEnds = [1, 1, 1, 1, 1];
+    lastEnds = [];
+    for (var i; i < lanes; i++) {
+        lastEnds[i] = 1;
+    }
     s.circle(waypoints[0].x, waypoints[0].y, 3).attr({fill: emphasizedDotColor});
     for (var i = 0; i < waypoints.length - 1; i++) {
         s.circle(waypoints[i + 1].x, waypoints[i + 1].y, 3).attr({fill: emphasizedDotColor});
@@ -211,7 +215,10 @@ $(document).ready(function() {
 
         tempArray = drawTraces(new coord(waypoints[i].x, waypoints[i].y), length, 2, lastEnds);
         // stellar work here vvv
-        lastEnds = [tempArray[0][tempArray[0].length - 1] - 1, tempArray[1][tempArray[0].length - 1] - 1, tempArray[2][tempArray[0].length - 1] - 1, tempArray[3][tempArray[0].length - 1] - 1, tempArray[4][tempArray[0].length - 1] - 1];
+        lastEnds = [];
+        for (var j = 0; j < lanes; j++) {
+            lastEnds[i] = tempArray[i][tempArray[0].length - 1] - 1;
+        }
 
         intermediateCoord = new coord(waypoints[i].x, waypoints[i].y + length);
         if (waypoints[i + 1].x > waypoints[i].x) {
@@ -220,26 +227,50 @@ $(document).ready(function() {
             tempArray = drawTraces(intermediateCoord, (waypoints[i].x - waypoints[i + 1].x), 3, lastEnds);
         }
 
-        lastEnds = [tempArray[0][tempArray[0].length - 1] - 1, tempArray[1][tempArray[0].length - 1] - 1, tempArray[2][tempArray[0].length - 1] - 1, tempArray[3][tempArray[0].length - 1] - 1, tempArray[4][tempArray[0].length - 1] - 1];
+        lastEnds = [];
+        for (var j = 0; j < lanes; j++) {
+            lastEnds[i] = tempArray[i][tempArray[0].length - 1] - 1;
+        }
     }
 
     traceChildren = traces.children();
     dotChildren = dots.children();
+
+    tracesScroll();
 });
 
 function tracesScroll () {
     scrollTop = document.body.scrollTop;
     last = target;
-    target = scrollTop + windowHeight * (scrollTop / (height - windowHeight));
+    target = scrollTop + windowHeight * .4;
+    var childY;
+    var length;
+    var child;
 
     for (var i = 0; i < traceChildren.length; i++) {
-        childY = traceChildren[i].getBBox().y;
+        let child = traceChildren[i];
+        childY = child.getBBox().y;
+
         if (childY <= target && childY > last) {
-            traceChildren[i].animate({stroke: "#0f0"}, 300);
-            //dotChildren[i].animate({stroke: "#0f0"}, 300);
+            length = child.attr("length");
+            Snap.animate(length, 0, function( value ) {
+                    child.attr({ "stroke-dashoffset": value});
+            }, 250);
         } else if (childY < last && childY > target) {
-            traceChildren[i].animate({stroke: "#fff"}, 300);
-            //dotChildren[i].animate({stroke: "#fff"}, 300);
+            length = child.attr("length");
+            Snap.animate(0, length, function( value ) {
+                    child.attr({ "stroke-dashoffset": value});
+            }, 250);
+        }
+    }
+    for (var i = 0; i < dotChildren.length; i++) {
+        let child = dotChildren[i];
+        childY = child.getBBox().y;
+
+        if (childY <= target && childY > last) {
+            child.animate({r: dotSize}, 250);
+        } else if (childY < last && childY > target) {
+            child.animate({r: 0}, 250);
         }
     }
 }
