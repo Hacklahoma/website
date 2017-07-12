@@ -10,7 +10,10 @@ var waypoints = new Array();
 
 var traces;
 var traceChildren;
+var traceChildrenY;
 var dots;
+var dotChildren;
+var dotChildrenY;
 
 var scrollTop;
 var height;
@@ -207,9 +210,9 @@ $(document).ready(function() {
     for (var i; i < lanes; i++) {
         lastEnds[i] = 1;
     }
-    s.circle(waypoints[0].x, waypoints[0].y, 3).attr({fill: emphasizedDotColor});
+    //s.circle(waypoints[0].x, waypoints[0].y, 3).attr({fill: emphasizedDotColor});
     for (var i = 0; i < waypoints.length - 1; i++) {
-        s.circle(waypoints[i + 1].x, waypoints[i + 1].y, 3).attr({fill: emphasizedDotColor});
+        //s.circle(waypoints[i + 1].x, waypoints[i + 1].y, 3).attr({fill: emphasizedDotColor});
 
         length = waypoints[i + 1].y - waypoints[i].y - Math.abs(waypoints[i + 1].x - waypoints[i].x);
 
@@ -233,39 +236,55 @@ $(document).ready(function() {
         }
     }
 
+    // at this point is becomes painfully obvious that this could have been done more cleanly
     traceChildren = traces.children();
     dotChildren = dots.children();
+    traceChildrenY = calculateY(traceChildren);
+    dotChildrenY = calculateY(dotChildren);
+    traceChildrenLength = calculateLength(traceChildren);
 
     tracesScroll();
 });
 
+function calculateY(array) {
+    out = [];
+    for (var i = 0, arrayLen = array.length; i < arrayLen; i++) {
+        out[i] = array[i].getBBox().y;
+    }
+    return out;
+}
+
+function calculateLength(array) {
+    out = [];
+    for (var i = 0, arrayLen = array.length; i < arrayLen; i++) {
+        out[i] = array[i].attr("length");
+    }
+    return out;
+}
+
 function tracesScroll () {
-    scrollTop = document.body.scrollTop;
+    scrollTop = $(window).scrollTop();
     last = target;
     target = scrollTop + windowHeight * .4;
     var childY;
-    var length;
-    var child;
 
-    for (var i = 0; i < traceChildren.length; i++) {
+    for (var i = 0, arrayLen = traceChildren.length; i < arrayLen; i++) {
         let child = traceChildren[i];
-        childY = child.getBBox().y;
+        childY = traceChildrenY[i];
 
         if (childY <= target && childY > last) {
-            length = child.attr("length");
-            Snap.animate(length, 0, function( value ) {
+            Snap.animate(traceChildrenLength[i], 0, function( value ) {
                     child.attr({ "stroke-dashoffset": value});
             }, 250);
         } else if (childY < last && childY > target) {
-            length = child.attr("length");
-            Snap.animate(0, length, function( value ) {
+            Snap.animate(0, traceChildrenLength[i], function( value ) {
                     child.attr({ "stroke-dashoffset": value});
             }, 250);
         }
     }
     for (var i = 0; i < dotChildren.length; i++) {
         let child = dotChildren[i];
-        childY = child.getBBox().y;
+        childY = dotChildrenY[i];
 
         if (childY <= target && childY > last) {
             child.animate({r: dotSize}, 250);
