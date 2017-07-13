@@ -27,7 +27,6 @@ const dotSize = 1.6; // dot radius in px
 const traceWidth = 1; // trace line width in px
 const lanes = 5; // number of parallel trace lanes (may not all be filled)
 const spacing = 10; // spacing multiplier (makes lanes and nodes farther apart)
-const drawCompMult = 1.01; // adds a bit of length to straight segments, so they render better.  set to 1 to be normal.
 
 // pattern constants - increasing mults makes more likely, increasing thresholds makes less likely
 const nodeMult = 1.34 // likelihood of a node spawning, in a vacuum
@@ -74,7 +73,7 @@ function getCoords(column, row, start, orientation) {
 }
 
 function drawLineSegment(start, orientation, direction) {
-    drawLine(start, orientation, direction, spacing * drawCompMult);
+    drawLine(start, orientation, direction, spacing);
 }
 
 // These bastardized square segments with trigonometric rotation is really annoying
@@ -125,6 +124,7 @@ function drawLine(start, orientation, direction, length) {
 // Orientation 1 is 45 degrees clockwise from right, 2 is down, 3 is 45 degrees clockwise from down (artifact of old trig stuff)
 function drawTraces(start, length, orientation, topRow) {
     var dotArray = createDotArray(lanes, Math.floor(length / spacing) + 1, topRow);
+    console.log(dotArray);
     for (var column = 0; column < dotArray.length; column++) {
         for (var row = 0; row < dotArray[0].length - 1; row++) {
             var currentCoords = getCoords(column, row, start, orientation);
@@ -173,11 +173,11 @@ function drawTraces(start, length, orientation, topRow) {
             var drawn = 0;
             if (dotArray[column][row] == 2) {
                 s.circle(currentCoords.x, currentCoords.y, 0).attr({fill: dotColor}).appendTo(dots);
-            } else if (dotArray[column][row] > 2) {
+            } /*else if (dotArray[column][row] > 2) {
                 //s.circle(currentCoords.x, currentCoords.y, 2).attr({fill: "#8df"}); // blue
             } else if (dotArray[column][row] == 1) {
                 //s.circle(currentCoords.x, currentCoords.y, 2).attr({fill: "#cc0"}); // yellow
-            }
+            } */
         }
     }
     // console.log(dotArray);
@@ -194,10 +194,18 @@ function setup() {
     traces = s.group();
     dots = s.group();
 
-    waypoints.push(new coord($("#logo").offset().left + $("#logo").width() * 0.5 - spacing * lanes * 0.5, $("#logo").offset().top + $("#logo").height() * 0.5));
-    waypoints.push(new coord(60, $("#aboutContent").offset().top - 20));
-    waypoints.push(new coord(120, $("#aboutContent").offset().top + $("#aboutContent").height() + 20));
-    waypoints.push(new coord(120, $(document).height() + 300));
+    let logoLeft = $("#logo").offset().left;
+    let logoWidth = $("#logo").width();
+    let logoTop = $("#logo").offset().top;
+    let logoHeight = $("#logo").height();
+
+    let aboutTop = $("#aboutContent").offset().top;
+    let aboutHeight = $("#aboutContent").height()
+
+    waypoints.push(new coord(Math.round((logoLeft + logoWidth * 0.5 - spacing * lanes * 0.5) / spacing) * spacing, Math.round((logoTop + logoHeight * 0.5) / spacing) * spacing));
+    waypoints.push(new coord(Math.round(60 / spacing) * spacing, Math.round((aboutTop - 20) / spacing) * spacing));
+    waypoints.push(new coord(Math.round(120 / spacing) * spacing, Math.round((aboutTop + aboutHeight + 20) / spacing) * spacing));
+    waypoints.push(new coord(Math.round(120 / spacing) * spacing, Math.round((documentHeight + 300) / spacing) * spacing));
 
     let start = new coord(60 + spacing * lanes, $("#aboutContent").offset().top - 20);
     let end = new coord($("#aboutContent").offset().left + $("#aboutContent").width(), $("#aboutContent").offset().top - 20);
@@ -247,20 +255,21 @@ function generateTraces() {
     var intermediateCoord;
     var tempArray;
     var lastEnds = [];
-    for (var i; i < lanes; i++) {
+    for (let i = 0; i < lanes; i++) {
         lastEnds[i] = 1;
     }
+    console.log(lastEnds);
     //s.circle(waypoints[0].x, waypoints[0].y, 3).attr({fill: emphasizedDotColor});
-    for (var i = 0; i < waypoints.length - 1; i++) {
+    for (let i = 0; i < waypoints.length - 1; i++) {
         //s.circle(waypoints[i + 1].x, waypoints[i + 1].y, 3).attr({fill: emphasizedDotColor});
 
         length = waypoints[i + 1].y - waypoints[i].y - Math.abs(waypoints[i + 1].x - waypoints[i].x);
-
+        console.log(lastEnds);
         tempArray = drawTraces(new coord(waypoints[i].x, waypoints[i].y), length, 2, lastEnds);
         // stellar work here vvv
         lastEnds = [];
-        for (var j = 0; j < lanes; j++) {
-            lastEnds[i] = tempArray[i][tempArray[0].length - 1] - 1;
+        for (let j = 0; j < lanes; j++) {
+            lastEnds[j] = Math.sign(tempArray[j][tempArray[0].length - 1]);
         }
 
         intermediateCoord = new coord(waypoints[i].x, waypoints[i].y + length);
@@ -271,8 +280,8 @@ function generateTraces() {
         }
 
         lastEnds = [];
-        for (var j = 0; j < lanes; j++) {
-            lastEnds[i] = tempArray[i][tempArray[0].length - 1] - 1;
+        for (let j = 0; j < lanes; j++) {
+            lastEnds[j] = Math.sign(tempArray[j][tempArray[0].length - 1]);
         }
     }
 
