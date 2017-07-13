@@ -338,42 +338,15 @@ p .bold {
 	Style for the About section.
 */
 #about {
-	width: 100%;
-	height: auto;
-    margin: 0 4%;
-    overflow: hidden;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 2em;
-}
-
-/*
-	Style for the content of the About section.
-*/
-#aboutContent {
-	display: -webkit-box;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	flex-wrap: wrap;
-	-webkit-flex-flow: row wrap;
-	justify-content: space-between;
-	width: 80%;
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
-}
-
-/*
-	Style for each item of the About section.
-*/
-#aboutItem {
-	flex: 0 0 40%;
+	width: 65%;
+	margin-bottom: 5em;
 	height: auto;
-	margin: auto;
+	overflow: hidden;
+	text-align: center;
 }
-
 
 /*
 	Style for the FAQ section.
