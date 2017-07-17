@@ -5,6 +5,8 @@
 //  HacklahomaWebsite
 //
 
+const mobileMaxWidth = 750; // screens smaller than this will be considered mobile.
+
 // Global variable for the top of the nav bar.
 // (Needs to be global to enable changes when the window resizes).
 var stickyNavTop = $('#navBar').offset().top;
@@ -19,9 +21,7 @@ $(document).ready(function() {
 	var stickyNav = function() {
 		var scrollTop = $(window).scrollTop();
 
-        // modified for "mobile" browsers
-        // (width less than 750px)
-        if (window.innerWidth < 750) {
+        if (window.innerWidth < mobileMaxWidth) {
             // do nothing (shh it's fine)
         } else if(scrollTop > stickyNavTop) {
 			$('#navBar').addClass('fixed');
@@ -35,7 +35,9 @@ $(document).ready(function() {
 	$(window).on({
 		scroll: function() {
 			stickyNav();
-            tracesScroll(); // in traces.js  Perf is better with one onscroll
+            if (window.innerWidth > mobileMaxWidth) {
+                tracesScroll(); // in traces.js  Perf is better with one onscroll
+            }
 		}, resize: function() {
 			if( $('#navBar').attr('class') == "absolute fixed") {
 				// do nothing
@@ -59,13 +61,13 @@ $(document).ready(function($) {
      * We use the scroll functionality again, some array creation and
      * manipulation, class adding and class removing, and conditional testing
      */
-    
+
     // Get all links with div IDs that end in "Link" (should be only nav bar links).
     var aChildren = $("a[id$='Link']").toArray();
 
 	// Create the empty aArray.
     var aArray = [];
-    
+
     // Get the href attributes of those links.
     for(var i = 0; i < aChildren.length; i++) {
     	var aChild = aChildren[i];
@@ -77,10 +79,10 @@ $(document).ready(function($) {
     $(window).scroll(function() {
     	// Get the offset of the window from the top of the page.
     	var windowPos = $(window).scrollTop();
-    	
+
     	// Get the height of the window.
     	var windowHeight = $(window).height();
-    	
+
     	// Can we delete this?
     	var docHeight = $(document).height();
 
@@ -88,25 +90,25 @@ $(document).ready(function($) {
     	for(var i = 0; i < aArray.length; i++) {
     		// Get the link from the array.
     		var theID = aArray[i];
-    		
+
     		// Get the offset of the div from the top of the page.
     		var divPos = $(theID).offset().top;
-    		
+
     		// Fix for navBar height.
     		divPos = divPos - 50;
-    		
+
     		// Get the height of the div in question.
     		var divHeight = $(theID).height();
-    		
+
     		// Correction for our previous adjustment so that the end of the div is calculated properly.
     		divHeight = divHeight + 50;
-    		
+
     		// $('#test').text("scroll: " + windowPos + " win height: " + windowHeight + " doc height: " + docHeight);
 
 			/*
 				If the user has scrolled to the bottom of the screen, highlight and underline the contact link in the nav bar
 				and remove the highlight and underline from all the other links.
-				
+
 				Otherwise, remove the highlight and underline from the contact link in the nav bar. Futhermore, if the view port
 				is between the top and bottom of the div, highlight and underline its nav bar link. Remove the highlight and underline
 				from all the other links whose corresponding divs are not shown on the screen.
@@ -114,13 +116,13 @@ $(document).ready(function($) {
 			if((windowPos + windowHeight) == docHeight) {
 				$("a[href=" + theID + "]").removeClass("active");
     			$("a[href=" + theID + "]").removeClass("underline");
-				
+
 				$("a[href='#footer']").addClass("active");
 				$("a[href='#footer']").addClass("underline");
 			} else {
 				$("a[href='#footer']").removeClass("active");
 				$("a[href='#footer']").removeClass("underline");
-				
+
     			if(windowPos >= divPos && windowPos < (divPos + divHeight)) {
     				$("a[href=" + theID + "]").addClass("active");
     				$("a[href=" + theID + "]").addClass("underline");

@@ -194,6 +194,9 @@ function setup() {
 }
 
 $(document).ready(function() {
+    if ($(window).width() < mobileMaxWidth) {
+        return -1;
+    }
     setup();
 
     var length;
