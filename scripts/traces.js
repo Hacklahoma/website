@@ -18,6 +18,8 @@ var dotChildrenY;
 var scrollTop;
 var height;
 var windowHeight;
+var windowWidth;
+var documentHeight;
 var target = 0;
 
 // formatting constants
@@ -31,8 +33,8 @@ const drawCompMult = 1.01; // adds a bit of length to straight segments, so they
 const nodeMult = 1.34 // likelihood of a node spawning, in a vacuum
 const chainMult = 0.86 // additional likelihood of a node spawning if there is another node above it
 const linearThreshold = 0.0 // threshold for a line to be drawn from a node to the one below it
-const rightThreshold = 0.7 // threshold for a line to be drawn from a node to the one below and to the right of it
-const leftThreshold = 0.7 // threshold for a line to be drawn from a node the one below and to the left of it
+const rightThreshold = 0.64 // threshold for a line to be drawn from a node to the one below and to the right of it
+const leftThreshold = 0.64 // threshold for a line to be drawn from a node the one below and to the left of it
 
 // colors
 const dotColor = "#fff";
@@ -185,20 +187,58 @@ function drawTraces(start, length, orientation, topRow) {
 function setup() {
     height = document.body.scrollHeight;
     windowHeight = $(window).height();
+    documentHeight = $(document).height();
 
     s = Snap("#traces");
 
     traces = s.group();
     dots = s.group();
 
-    waypoints.push(new coord(300, 100));
-    waypoints.push(new coord(60, waypoints[0].y + 600));
-    waypoints.push(new coord(120, 1500));
-    waypoints.push(new coord(20, 2000));
+    waypoints.push(new coord($("#logo").offset().left + $("#logo").width() * 0.5 - spacing * lanes * 0.5, $("#logo").offset().top + $("#logo").height() * 0.5));
+    waypoints.push(new coord(60, $("#aboutContent").offset().top - 20));
+    waypoints.push(new coord(120, $("#aboutContent").offset().top + $("#aboutContent").height() + 20));
+    waypoints.push(new coord(120, $(document).height() + 300));
+
+    let start = new coord(60 + spacing * lanes, $("#aboutContent").offset().top - 20);
+    let end = new coord($("#aboutContent").offset().left + $("#aboutContent").width(), $("#aboutContent").offset().top - 20);
+    // s.circle(start.x, start.y, 0).attr({fill: dotColor}).appendTo(dots);
+    // s.circle(end.x, end.y, 0).attr({fill: dotColor}).appendTo(dots);
+    let length = Math.sqrt(Math.pow(start.x - end.x, 2) + Math.pow(start.y - end.y, 2));
+    // s.line(start.x, start.y, end.x, end.y).attr({stroke: traceColor, strokeWidth: traceWidth, "stroke-dasharray": length, "stroke-dashoffset": length, "length": length}).appendTo(traces);
 }
 
-$(document).ready(function() {
-    if ($(window).width() < mobileMaxWidth) {
+function clearTraces() {
+    s.clear();
+
+    waypoints = new Array();
+
+    traces = s.group();
+    traceChildren = [];
+    traceChildrenY = [];
+    dots = s.group();
+    dotChildren = [];
+    dotChildrenY = [];
+
+    scrollTop = 0;
+    height = 0;
+    windowHeight = 0;
+    windowWidth = 0;
+    documentHeight = 0;
+    target = 0;
+
+    length = 0;
+    intermediateCoord = undefined;
+    tempArray = [];
+    lastEnds = [];
+}
+
+$(document).ready( function() {
+    generateTraces();
+});
+
+function generateTraces() {
+    windowWidth = $(window).width();
+    if (windowWidth < mobileMaxWidth) {
         return -1;
     }
     setup();
@@ -206,7 +246,7 @@ $(document).ready(function() {
     var length;
     var intermediateCoord;
     var tempArray;
-    lastEnds = [];
+    var lastEnds = [];
     for (var i; i < lanes; i++) {
         lastEnds[i] = 1;
     }
@@ -244,7 +284,7 @@ $(document).ready(function() {
     traceChildrenLength = calculateLength(traceChildren);
 
     tracesScroll();
-});
+}
 
 function calculateY(array) {
     out = [];
@@ -263,20 +303,23 @@ function calculateLength(array) {
 }
 
 function tracesScroll () {
+    if (windowWidth < mobileMaxWidth) {
+        return -1;
+    }
     scrollTop = $(window).scrollTop();
     last = target;
-    target = scrollTop + windowHeight * .4;
+    target = scrollTop + windowHeight * (.36 + .6 * (scrollTop + windowHeight) / (documentHeight));
     var childY;
 
     for (var i = 0, arrayLen = traceChildren.length; i < arrayLen; i++) {
         let child = traceChildren[i];
         childY = traceChildrenY[i];
 
-        if (childY <= target && childY > last) {
+        if (childY <= target && childY >= last) {
             Snap.animate(traceChildrenLength[i], 0, function( value ) {
                     child.attr({ "stroke-dashoffset": value});
             }, 250);
-        } else if (childY < last && childY > target) {
+        } else if (childY <= last && childY >= target) {
             Snap.animate(0, traceChildrenLength[i], function( value ) {
                     child.attr({ "stroke-dashoffset": value});
             }, 250);
@@ -286,9 +329,9 @@ function tracesScroll () {
         let child = dotChildren[i];
         childY = dotChildrenY[i];
 
-        if (childY <= target && childY > last) {
+        if (childY <= target && childY >= last) {
             child.animate({r: dotSize}, 250);
-        } else if (childY < last && childY > target) {
+        } else if (childY <= last && childY >= target) {
             child.animate({r: 0}, 250);
         }
     }

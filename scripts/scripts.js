@@ -5,7 +5,7 @@
 //  HacklahomaWebsite
 //
 
-const mobileMaxWidth = 750; // screens smaller than this will be considered mobile.
+const mobileMaxWidth = 1000; // screens smaller than this will be considered mobile.
 
 // Global variable for the top of the nav bar.
 // (Needs to be global to enable changes when the window resizes).
@@ -39,6 +39,8 @@ $(document).ready(function() {
                 tracesScroll(); // in traces.js  Perf is better with one onscroll
             }
 		}, resize: function() {
+            clearTraces();
+            generateTraces(); // in traces.js.  rip frames.
 			if( $('#navBar').attr('class') == "absolute fixed") {
 				// do nothing
 			} else {

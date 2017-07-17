@@ -1,6 +1,26 @@
 /* Use with main.css
  * Just includes some additional rules for small displays. */
 
+@media (max-width: 1000px) {
+    .logo {
+        max-width: 80vw;
+        max-height: 440px;
+        margin-top: 0;
+    }
+
+    .header-info {
+        display: inline-table;
+    }
+
+    .header-info h1 {
+        font-size: 10vw;
+    }
+
+    .header-info p {
+        font-size: 5vw;
+    }
+}
+
  /* Settings for mobile (less than or 750px wide) */
  @media (max-width: 750px) {
      #menu-trigger-label {
