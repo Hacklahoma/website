@@ -122,29 +122,41 @@ p .bold {
 	font-size: 1em;
 }
 
+#traces {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
 /*
 	The header of the main page. Contains the logo, date, location, and the information button.
 */
 #header {
 	text-align: center;
-	display: block;
-	width: 100vw;
+	display: table;
+	width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
 	height: 100vh;
-	position: relative;
-	overflow: scroll;
+	overflow: visible;
+    position: relative;
+}
+
+.header-info {
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+    height: auto;
 }
 
 /*
 	The style for the logo placed in the header.
 */
 .logo {
-	display: block;
-	margin-top: -1em;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: -3em;
-	max-width: 100%;
-	height: auto;
+	margin: -10px;
+    max-width: 100%;
 }
 
 /*
@@ -190,7 +202,7 @@ p .bold {
 	display: block;
     margin: auto;
     margin-top: 2em;
-    margin-bottom: 4.125em;
+    margin-bottom: 1em;
     position: relative;
     vertical-align: center;
 }
@@ -306,6 +318,8 @@ p .bold {
 */
 .fixed {
 	position: fixed;
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
 	top: 0;
 	left: 0;
 }
@@ -446,6 +460,7 @@ p .bold {
 
 /*
 	Style for the each sponsor's logo.
+	TODO: Might have to change this to be specific for each sponsor.
 */
 .sponsorLogo {
 	flex: 0 0 auto;
@@ -624,6 +639,12 @@ p .bold {
     filter: drop-shadow(5px 5px 5px #222);
 }
 
-#mlh-trust-badge:hover {
-	max-width: 110px;
+#mlh-trust-badge img{
+    top: -8px;
+    position: relative;
+    transition: top 150ms ease-in;
+}
+
+#mlh-trust-badge img:hover {
+	top: 0px;
 }
