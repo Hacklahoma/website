@@ -199,20 +199,13 @@ function setup() {
     let logoTop = $("#logo").offset().top;
     let logoHeight = $("#logo").height();
 
-    let aboutTop = $("#aboutContent").offset().top;
-    let aboutHeight = $("#aboutContent").height()
+    let aboutTop = $("#about").children("h3").offset().top;
+    let aboutHeight = $("#about").height() - $("#about").children("h1").height();
 
     waypoints.push(new coord(Math.round((logoLeft + logoWidth * 0.5 - spacing * lanes * 0.5) / spacing) * spacing, Math.round((logoTop + logoHeight * 0.5) / spacing) * spacing));
     waypoints.push(new coord(Math.round(60 / spacing) * spacing, Math.round((aboutTop - 20) / spacing) * spacing));
     waypoints.push(new coord(Math.round(120 / spacing) * spacing, Math.round((aboutTop + aboutHeight + 20) / spacing) * spacing));
     waypoints.push(new coord(Math.round(120 / spacing) * spacing, Math.round((documentHeight + 300) / spacing) * spacing));
-
-    let start = new coord(60 + spacing * lanes, $("#aboutContent").offset().top - 20);
-    let end = new coord($("#aboutContent").offset().left + $("#aboutContent").width(), $("#aboutContent").offset().top - 20);
-    // s.circle(start.x, start.y, 0).attr({fill: dotColor}).appendTo(dots);
-    // s.circle(end.x, end.y, 0).attr({fill: dotColor}).appendTo(dots);
-    let length = Math.sqrt(Math.pow(start.x - end.x, 2) + Math.pow(start.y - end.y, 2));
-    // s.line(start.x, start.y, end.x, end.y).attr({stroke: traceColor, strokeWidth: traceWidth, "stroke-dasharray": length, "stroke-dashoffset": length, "length": length}).appendTo(traces);
 }
 
 function clearTraces() {
