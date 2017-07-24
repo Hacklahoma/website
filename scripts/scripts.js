@@ -21,9 +21,15 @@ $(document).ready(function() {
 	var stickyNav = function() {
 		var scrollTop = $(window).scrollTop();
 
-        if (window.innerWidth < mobileMaxWidth) {
-            // do nothing (shh it's fine)
-        } else if(scrollTop > stickyNavTop) {
+		if (window.innerWidth <= mobileMaxWidth) {
+			if(window.innerWidth > 750 && scrollTop > stickyNavTop) {
+				$('#navBar').addClass('fixed');
+			} else if(!(scrollTop > stickyNavTop)) {
+				$('#navBar').removeClass('fixed');
+			} else {
+				// do nothing
+			}
+        } else if (scrollTop > stickyNavTop) {
 			$('#navBar').addClass('fixed');
 		} else {
 			$('#navBar').removeClass('fixed');

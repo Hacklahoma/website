@@ -6,18 +6,34 @@
         max-width: 80vw;
         max-height: 440px;
         margin-top: 0;
+        margin-bottom: -4em;
     }
 
     .header-info {
-        display: inline-table;
+        display: block;
+        width: 100%;
     }
 
     .header-info h1 {
-        font-size: 10vw;
+        font-size: 8vw;
     }
 
     .header-info p {
-        font-size: 5vw;
+        font-size: 4vw;
+    }
+    
+    .socialMedia {
+    	display: inline-table;
+    	position: absolute;
+    	right: 1.5vw;
+    	top: calc(50vh - 150px);
+    	width: 10%;
+    }
+    
+    .socMedLogo {
+    	display: block;
+    	max-width: 100%;
+    	min-width: 75px;
     }
 }
 
@@ -25,6 +41,10 @@
  @media (max-width: 750px) {
      #menu-trigger-label {
          display: block !important;
+     }
+     
+     .logo {
+        margin-bottom: 0;
      }
 
      #navWrapper {
@@ -89,6 +109,10 @@
      }
      
      #mlh-trust-badge {
-     	right: 0 !important;
+     	right: 1vw !important;
      }
- }
+     
+     .socialMedia {
+     	display: none;
+     }
+}
