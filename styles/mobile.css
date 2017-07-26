@@ -30,7 +30,7 @@
      #navWrapper {
          text-align: left;
          height: 100%;
-         width: 60%;
+         width: 150px;
          top: 0;
          right: auto;
          position: fixed !important;
@@ -38,7 +38,7 @@
      }
 
      .menuClosed {
-         left: calc(0px - 60%) !important;
+         left: -150px !important;
      }
 
      #navWrapper a {
@@ -48,30 +48,31 @@
      #navBar {
          text-align: left;
          height: 100vh;
-         width: 60%;
+         width: 150px;
+         min-width: 150px;
          padding-top: 48px;
      }
 
      #navBar a {
          text-align: left;
      }
-     
+
      #title {
      	font-size: 12vw;
      }
-     
+
      .dates {
      	font-size: 8vw;
      }
-     
+
      .location {
      	font-size: 6vw;
      }
-     
+
      #about {
          width: calc(100% - 4em);
      }
-     
+
      #faqItem {
      	flex: 0 0 calc(100% - 4em);
      }
@@ -87,7 +88,7 @@
          margin: 2em;
          padding: 0;
      }
-     
+
      #mlh-trust-badge {
      	right: 0 !important;
      }

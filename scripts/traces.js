@@ -6,7 +6,9 @@
  */
 var s;
 
-var waypoints = new Array();
+var waypointsOne = new Array();
+var waypointsTwo = new Array();
+var waypointsThree = new Array();
 
 var traces;
 var traceChildren;
@@ -187,6 +189,7 @@ function drawTraces(start, length, orientation, topRow) {
 function setup() {
     height = document.body.scrollHeight;
     windowHeight = $(window).height();
+    windowWidth = $(window).width();
     documentHeight = $(document).height();
 
     s = Snap("#traces");
@@ -202,16 +205,35 @@ function setup() {
     let aboutTop = $("#about").children("h3").offset().top;
     let aboutHeight = $("#about").height() - $("#about").children("h1").height();
 
-    waypoints.push(new coord(Math.round((logoLeft + logoWidth * 0.5 - spacing * lanes * 0.5) / spacing) * spacing, Math.round((logoTop + logoHeight * 0.5) / spacing) * spacing));
-    waypoints.push(new coord(Math.round(60 / spacing) * spacing, Math.round((aboutTop - 20) / spacing) * spacing));
-    waypoints.push(new coord(Math.round(120 / spacing) * spacing, Math.round((aboutTop + aboutHeight + 20) / spacing) * spacing));
-    waypoints.push(new coord(Math.round(120 / spacing) * spacing, Math.round((documentHeight + 300) / spacing) * spacing));
+    let sponsorsTop = $("#sponsors").children("h1").offset().top;
+    let sponsorsHeight = $("#sponsors").height();
+
+    // center of logo
+    waypointsOne.push(new coord(Math.round((logoLeft + logoWidth * 0.5 - spacing * lanes * 0.5) / spacing) * spacing, Math.round((logoTop + logoHeight * 0.5) / spacing) * spacing));
+    // top of about
+    waypointsOne.push(new coord(Math.round(60 / spacing) * spacing, Math.round((aboutTop - 20) / spacing) * spacing));
+    // bottom of about
+    waypointsOne.push(new coord(Math.round(120 / spacing) * spacing, Math.round((aboutTop + aboutHeight + 20) / spacing) * spacing));
+    // middle of FAQ
+    waypointsOne.push(new coord(Math.round(120 / spacing) * spacing, Math.round((aboutTop + aboutHeight + 20) / spacing) * spacing + 100));
+
+    // middle of FAQ, right
+    waypointsTwo.push(new coord(Math.round((windowWidth - 120) / spacing) * spacing, Math.round((aboutTop + aboutHeight + 20) / spacing) * spacing + 100));
+    // top of sponsors
+    waypointsTwo.push(new coord(Math.round((windowWidth - 120) / spacing) * spacing, Math.round((sponsorsTop) / spacing) * spacing + 100));
+
+    // bottom of sponsors
+    waypointsThree.push(new coord(Math.round(120) / spacing * spacing, Math.round((sponsorsTop + sponsorsHeight) / spacing) * spacing - 100));
+    // bottom of page
+    waypointsThree.push(new coord(Math.round(120 / spacing) * spacing, Math.round((documentHeight + 300) / spacing) * spacing));
 }
 
 function clearTraces() {
     s.clear();
 
-    waypoints = new Array();
+    waypointsOne = new Array();
+    waypointsTwo = new Array();
+    waypointsThree = new Array();
 
     traces = s.group();
     traceChildren = [];
@@ -234,15 +256,18 @@ function clearTraces() {
 }
 
 $(document).ready( function() {
-    generateTraces();
+    setup();
+    generateTraces(waypointsOne);
+    generateTraces(waypointsTwo);
+    generateTraces(waypointsThree);
 });
 
-function generateTraces() {
+function generateTraces(waypoints) {
+    console.log(waypoints);
     windowWidth = $(window).width();
     if (windowWidth < mobileMaxWidth) {
         return -1;
     }
-    setup();
 
     var length;
     var intermediateCoord;

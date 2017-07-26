@@ -22,4 +22,5 @@ window.onload = function(){
 // TODO: move the whole page when menu is open
 $('#menu-trigger').change( function () {
     $('#navWrapper').toggleClass("menuClosed");
+    $('#navBar').removeClass("fixed");
 });
