@@ -25,7 +25,7 @@
     .socialMedia {
     	display: inline-table;
     	position: absolute;
-    	right: 1.5vw;
+    	right: 0;
     	top: calc(50vh - 150px);
     	width: 10%;
     }
@@ -33,7 +33,7 @@
     .socMedLogo {
     	display: block;
     	max-width: 100%;
-    	min-width: 75px;
+    	min-width: 50px;
     }
 }
 
@@ -114,6 +114,6 @@
      }
      
      .socialMedia {
-     	display: none;
+     	right: 3vw !important;
      }
 }
