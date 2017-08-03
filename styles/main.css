@@ -41,7 +41,7 @@
 }
 
 /*
-	Default settings for the body of the webpage.
+	Default style for the body of the webpage.
 */
 body {
 	background: #333333; /* Dark grey */
@@ -59,7 +59,7 @@ body {
 }
 
 /*
-	Default settings for text elements within the h1 tag.
+	Default style for text elements within the h1 tag.
 */
 h1 {
 	font-family: "Futura";
@@ -72,7 +72,7 @@ h1 {
 }
 
 /*
-	Default settings for text elements within the h3 tag.
+	Default style for text elements within the h3 tag.
 */
 h3 {
     font-family: "Futura";
@@ -84,7 +84,7 @@ h3 {
 }
 
 /*
-	Settings to use futura heavy.
+	Style for futura heavy.
 */
 h1 .bold, h3 .bold {
 	font-family: "Futura";
@@ -94,7 +94,7 @@ h1 .bold, h3 .bold {
 }
 
 /*
-	Default settings for the main section headings.
+	Default style for the main section headings.
 */
 .anchor {
 	font-family: "Futura";
@@ -106,7 +106,7 @@ h1 .bold, h3 .bold {
 }
 
 /*
-	Default settings for text elements within the p tag.
+	Default style for text elements within the p tag.
 */
 p {
     font-weight: 300;
@@ -116,12 +116,15 @@ p {
 }
 
 /*
-	Settings to use avenir medium.
+	Style for avenir medium.
 */
 p .bold {
 	font-size: 1em;
 }
 
+/*
+	Style for the pattern traces.
+*/
 #traces {
     position: absolute;
     width: 100%;
@@ -129,6 +132,9 @@ p .bold {
     overflow: visible;
 }
 
+/*
+	Style for the header.
+*/
 #header {
 	display: table;
 	width: 80%;
@@ -138,6 +144,9 @@ p .bold {
 	margin-right: auto;
 }
 
+/*
+	Style for the header items.
+*/
 .header-info {
 	display: table-cell;
 	text-align: center;
@@ -453,8 +462,7 @@ p .bold {
 }
 
 /*
-	Style for the each sponsor's logo.
-	TODO: Might have to change this to be specific for each sponsor.
+	Style for the container of each sponsor's logo.
 */
 .sponsorLogo {
 	flex: 0 0 auto;
@@ -462,6 +470,9 @@ p .bold {
 	max-width: 100%;
 }
 
+/*
+	Style for the image of each sponsor's logo.
+*/
 .sponsorLogo img {
 	max-width: 100%;
 	min-width: auto;
@@ -501,7 +512,7 @@ p .bold {
 }
 
 /*
-	Style for the social media panel in the footer.
+	Style for the social media logos.
 */
 .socialMedia {
 	display: flex;
@@ -516,102 +527,14 @@ p .bold {
 }
 
 /*
-	Style for the form that pops up when the user clicks the
-	information button.
-
-	TODO: fade in animation?
-	TODO: thank the user for their interest after submission.
+	Style for the MLH trust badge container.
 */
-#infoFormPopup {
-	background-color: #FFF;
-	height: 90vh;
-	width: 50vw;
-	display: none;
-	z-index: 9999;
-	position: fixed;
-	top: 5vh;
-	left: 25vw;
-	right: 25vw;
-	-moz-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	-webkit-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	overflow: auto;
-	color: #000;
-	border-radius: 0.25em;
-}
-
-/*
-	Style for the content within the info form.
-*/
-.infoFormContent {
-	padding: 0.125em 1em;
-}
-
-/*
-	Style for the close button on the info form.
-*/
-.infoFormClose {
-	color: #000;
-	float: right;
-	font-size: 1.75em;
-	font-weight: bold;
-}
-
-/*
-	Style for what happens when the user hovers over the
-	close button on the info form.
-*/
-.infoFormClose:hover {
-	color: #912929;
-	text-decoration: none;
-	cursor: pointer;
-}
-
-/*
-	Style for the text inputs on the info form.
-*/
-#infoFormPopup input[type=text] {
-	width: 75%;
-	border-radius: 0.25em;
-	border: solid 1px black;
-	font-size: 1.25em
-}
-
-/*
-	Style for the submit button on the info form.
-*/
-#infoFormPopup input[type=submit] {
-	display: block;
-	font-family: "Avenir";
-	font-weight: 300;
-	font-size: 2em;
-	color: #FFF;
-	border: none;
-	margin: 0.5em auto;
-	padding: 0.5em 1em;
-	background-color: #912929;
-	text-align: center;
-	vertical-align: center;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	-moz-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	-webkit-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
-/*
-	Style for what happens when the user hovers over the submit
-	button on the info form.
-*/
-#infoFormPopup input[type=submit]:hover {
-	background-color: #000000;
-	cursor: pointer;
-}
-
 #mlh-trust-badge {
 	display: block;
 	max-width: 100px;
 	min-width: 60px;
 	position: fixed;
-	/*right: 20px;*/
+	right: 20px;
 	right: 1.5vw;
 	top: 0;
 	width: 10%;
@@ -620,12 +543,19 @@ p .bold {
     filter: drop-shadow(5px 5px 5px #222);
 }
 
+/*
+	Style for the MLH trust badge image.
+*/
 #mlh-trust-badge img{
     top: -8px;
     position: relative;
     transition: top 150ms ease-in;
 }
 
+/*
+	Style for the MLH trust badge image when the user hovers
+	over the MLH trust badge.
+*/
 #mlh-trust-badge img:hover {
 	top: 0px;
 }
