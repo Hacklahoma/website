@@ -9,6 +9,7 @@ var s;
 var waypointsOne = new Array();
 var waypointsTwo = new Array();
 var waypointsThree = new Array();
+var waypointsGrey = new Array();
 
 var traces;
 var traceChildren;
@@ -41,6 +42,7 @@ const leftThreshold = 0.64 // threshold for a line to be drawn from a node the o
 const dotColor = "#fff";
 const emphasizedDotColor = "#f00";
 const traceColor = "#fff";
+const secondaryTraceColor = "#333333";
 
 
 function createDotArray(width, height, topRow) {
@@ -74,13 +76,13 @@ function getCoords(column, row, start, orientation) {
     return currentCoords;
 }
 
-function drawLineSegment(start, orientation, direction) {
-    drawLine(start, orientation, direction, spacing);
+function drawLineSegment(start, orientation, direction, color) {
+    drawLine(start, orientation, direction, spacing, color);
 }
 
 // These bastardized square segments with trigonometric rotation is really annoying
 // If you know the (probably obvious) solution to this, please update this code and let me know.
-function drawLine(start, orientation, direction, length) {
+function drawLine(start, orientation, direction, length, color) {
     var end = new coord(0, 0);
     if (orientation === 2) {
         end.y = start.y + length;
@@ -117,15 +119,16 @@ function drawLine(start, orientation, direction, length) {
         console.log("Orientation: " + orientation + ", Direction: " + direction + ", wth did you do???");
     }
     length = Math.sqrt(Math.pow(start.x - end.x, 2) + Math.pow(start.y - end.y, 2));
-    s.line(start.x, start.y, end.x, end.y).attr({stroke: traceColor, strokeWidth: traceWidth, "stroke-dasharray": length, "stroke-dashoffset": length, "length": length}).appendTo(traces);
+    s.line(start.x, start.y, end.x, end.y).attr({stroke: color, strokeWidth: traceWidth, "stroke-dasharray": length, "stroke-dashoffset": length, "length": length}).appendTo(traces);
 }
 
 // Look on my pyramid and despair!
 // Also please get rid of all these repeated floating point operations.
 // This draws traces at random given a starting coordinate, maximum length, and orientation
 // Orientation 1 is 45 degrees clockwise from right, 2 is down, 3 is 45 degrees clockwise from down (artifact of old trig stuff)
-function drawTraces(start, length, orientation, topRow) {
+function drawTraces(start, length, orientation, topRow, color) {
     var dotArray = createDotArray(lanes, Math.floor(length / spacing) + 1, topRow);
+    console.log(color);
     console.log(dotArray);
     for (var column = 0; column < dotArray.length; column++) {
         for (var row = 0; row < dotArray[0].length - 1; row++) {
@@ -142,14 +145,14 @@ function drawTraces(start, length, orientation, topRow) {
                     j++;
                 }
                 if (j > 1) {
-                    drawLine(currentCoords, orientation, 2, spacing * (j - 1));
+                    drawLine(currentCoords, orientation, 2, spacing * (j - 1), color);
                 }
 
             } else if (dotArray[column][row] > 1 && dotArray[column][row + 1] < 1) {
                 // if there is a dot below and to the right of this one, maybe draw a trace to it
                 if (column + 1 < dotArray.length && dotArray[column + 1][row + 1]) {
                     if (Math.random() > rightThreshold) {
-                        drawLineSegment(currentCoords, orientation, 1);
+                        drawLineSegment(currentCoords, orientation, 1, color);
                         dotArray[column][row] = dotArray[column][row] + 1;
                         dotArray[column + 1][row + 1] = dotArray[column + 1][row + 1] + 1;
                     }
@@ -158,7 +161,7 @@ function drawTraces(start, length, orientation, topRow) {
                 // if there is a dot below and to the left of this one, maybe draw a trace to it
                 if (column - 1 > 0 && dotArray[column - 1][row + 1]) {
                     if (Math.random() > leftThreshold) {
-                        drawLineSegment(currentCoords, orientation, 3);
+                        drawLineSegment(currentCoords, orientation, 3, color);
                         dotArray[column][row] = dotArray[column][row] + 1;
                         dotArray[column - 1][row + 1] = dotArray[column - 1][row + 1] + 1;
                     }
@@ -174,7 +177,7 @@ function drawTraces(start, length, orientation, topRow) {
             var currentCoords = getCoords(column, row, start, orientation);
             var drawn = 0;
             if (dotArray[column][row] == 2) {
-                s.circle(currentCoords.x, currentCoords.y, 0).attr({fill: dotColor}).appendTo(dots);
+                s.circle(currentCoords.x, currentCoords.y, 0).attr({fill: color}).appendTo(dots);
             } /*else if (dotArray[column][row] > 2) {
                 //s.circle(currentCoords.x, currentCoords.y, 2).attr({fill: "#8df"}); // blue
             } else if (dotArray[column][row] == 1) {
@@ -202,30 +205,40 @@ function setup() {
     let logoTop = $("#logo").offset().top;
     let logoHeight = $("#logo").height();
 
+    let faqTop = $("#faq").offset().top;
+    let faqHeight = $("#faq").outerHeight();
+
     let aboutTop = $("#about").children("h3").offset().top;
-    let aboutHeight = $("#about").height() - $("#about").children("h1").height();
+    let aboutHeight = $("#about").outerHeight() - $("#about").children("h1").outerHeight();
 
     let sponsorsTop = $("#sponsors").children("h1").offset().top;
-    let sponsorsHeight = $("#sponsors").height();
+    let sponsorsHeight = $("#sponsors").outerHeight();
 
     // center of logo
-    waypointsOne.push(new coord(Math.round((logoLeft + logoWidth * 0.5 - spacing * lanes * 0.5) / spacing) * spacing, Math.round((logoTop + logoHeight * 0.5) / spacing) * spacing));
+    waypointsOne.push(gridify(new coord(logoLeft + logoWidth * 0.5 - spacing * lanes * 0.5, logoTop + logoHeight * 0.5)));
     // top of about
-    waypointsOne.push(new coord(Math.round(60 / spacing) * spacing, Math.round((aboutTop - 20) / spacing) * spacing));
+    waypointsOne.push(gridify(new coord(20, aboutTop - 20)));
     // bottom of about
-    waypointsOne.push(new coord(Math.round(120 / spacing) * spacing, Math.round((aboutTop + aboutHeight + 20) / spacing) * spacing));
+    waypointsOne.push(gridify(new coord(120, aboutTop + aboutHeight)));
     // middle of FAQ
-    waypointsOne.push(new coord(Math.round(120 / spacing) * spacing, Math.round((aboutTop + aboutHeight + 20) / spacing) * spacing + 100));
+    waypointsOne.push(gridify(new coord(120, faqTop + spacing * 2)));
 
-    // middle of FAQ, right
-    waypointsTwo.push(new coord(Math.round((windowWidth - 120) / spacing) * spacing, Math.round((aboutTop + aboutHeight + 20) / spacing) * spacing + 100));
-    // top of sponsors
-    waypointsTwo.push(new coord(Math.round((windowWidth - 120) / spacing) * spacing, Math.round((sponsorsTop) / spacing) * spacing + 100));
+    waypointsGrey.push(gridify(new coord(windowWidth - 60, faqTop - spacing)));
+    waypointsGrey.push(gridify(new coord(windowWidth - 60, faqTop + faqHeight + spacing * 2)));
 
-    // bottom of sponsors
-    waypointsThree.push(new coord(Math.round(120) / spacing * spacing, Math.round((sponsorsTop + sponsorsHeight) / spacing) * spacing - 100));
+    waypointsTwo.push(gridify(new coord(20, faqTop + faqHeight - spacing * 2)));
+
     // bottom of page
-    waypointsThree.push(new coord(Math.round(120 / spacing) * spacing, Math.round((documentHeight + 300) / spacing) * spacing));
+    waypointsTwo.push(gridify(new coord(20, documentHeight + 300)));
+
+    waypointsThree.push(gridify(new coord(windowWidth - 60, sponsorsTop - spacing * 2)));
+    waypointsThree.push(gridify(new coord(windowWidth - 60, sponsorsTop + sponsorsHeight + spacing * 2)));
+}
+
+function gridify(coordinate) {
+    coordinate.x = Math.round(coordinate.x / spacing) * spacing;
+    coordinate.y = Math.round(coordinate.y / spacing) * spacing;
+    return coordinate;
 }
 
 function clearTraces() {
@@ -234,6 +247,7 @@ function clearTraces() {
     waypointsOne = new Array();
     waypointsTwo = new Array();
     waypointsThree = new Array();
+    waypointsGrey = new Array();
 
     traces = s.group();
     traceChildren = [];
@@ -255,15 +269,15 @@ function clearTraces() {
     lastEnds = [];
 }
 
-$(document).ready( function() {
+function traces() {
     setup();
-    generateTraces(waypointsOne);
-    generateTraces(waypointsTwo);
-    generateTraces(waypointsThree);
-});
+    generateTraces(waypointsOne, traceColor);
+    generateTraces(waypointsTwo, traceColor);
+    generateTraces(waypointsThree, secondaryTraceColor);
+    generateTraces(waypointsGrey, secondaryTraceColor);
+}
 
-function generateTraces(waypoints) {
-    console.log(waypoints);
+function generateTraces(waypoints, color) {
     windowWidth = $(window).width();
     if (windowWidth < mobileMaxWidth) {
         return -1;
@@ -276,14 +290,12 @@ function generateTraces(waypoints) {
     for (let i = 0; i < lanes; i++) {
         lastEnds[i] = 1;
     }
-    console.log(lastEnds);
     //s.circle(waypoints[0].x, waypoints[0].y, 3).attr({fill: emphasizedDotColor});
     for (let i = 0; i < waypoints.length - 1; i++) {
         //s.circle(waypoints[i + 1].x, waypoints[i + 1].y, 3).attr({fill: emphasizedDotColor});
 
         length = waypoints[i + 1].y - waypoints[i].y - Math.abs(waypoints[i + 1].x - waypoints[i].x);
-        console.log(lastEnds);
-        tempArray = drawTraces(new coord(waypoints[i].x, waypoints[i].y), length, 2, lastEnds);
+        tempArray = drawTraces(new coord(waypoints[i].x, waypoints[i].y), length, 2, lastEnds, color);
         // stellar work here vvv
         lastEnds = [];
         for (let j = 0; j < lanes; j++) {
@@ -292,9 +304,9 @@ function generateTraces(waypoints) {
 
         intermediateCoord = new coord(waypoints[i].x, waypoints[i].y + length);
         if (waypoints[i + 1].x > waypoints[i].x) {
-            tempArray = drawTraces(intermediateCoord, (waypoints[i + 1].x - waypoints[i].x), 1, lastEnds);
+            tempArray = drawTraces(intermediateCoord, (waypoints[i + 1].x - waypoints[i].x), 1, lastEnds, color);
         } else if (waypoints[i + 1].x < waypoints[i].x) {
-            tempArray = drawTraces(intermediateCoord, (waypoints[i].x - waypoints[i + 1].x), 3, lastEnds);
+            tempArray = drawTraces(intermediateCoord, (waypoints[i].x - waypoints[i + 1].x), 3, lastEnds, color);
         }
 
         lastEnds = [];

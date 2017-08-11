@@ -11,6 +11,10 @@ const mobileMaxWidth = 1000; // screens smaller than this will be considered mob
 // (Needs to be global to enable changes when the window resizes).
 var stickyNavTop = $('#navBar').offset().top;
 
+$(window).load(function() {
+    traces();
+});
+
 /**
 	Fixes the navBar at the top of the screen when the user's screen is
 	in the content section, and at the bottom of the header when it isn't.
@@ -18,11 +22,11 @@ var stickyNavTop = $('#navBar').offset().top;
 $(document).ready(function() {
 	// Get the position of the top of the navbar.
 	stickyNavTop = $('#navBar').offset().top;
-	
+
 	var stickyNav = function() {
 		// The number of pixels the window has been scrolled vertically.
 		var scrollTop = $(window).scrollTop();
-		
+
 		// If the width of the web page is less than 1000px, ulimately the pattern needs
 		// to stop tracing down the page. Doing absolutely nothing stops the navbar from
 		// sticking to the top of the page though, so we have to check a few more conditions
@@ -33,49 +37,51 @@ $(document).ready(function() {
 			// to the top of the page.
 			if(window.innerWidth > 750 && scrollTop > stickyNavTop) {
 				$('#navBar').addClass('fixed');
-			
+
 			// If the user hasn't scrolled past the top of the navbar, use the navbar's default positioning.
 			} else if(!(scrollTop > stickyNavTop)) {
 				$('#navBar').removeClass('fixed');
 			} else {
 				// do nothing (stops pattern from being traced)
 			}
-			
+
 		// If the user has scrolled past the top of the navbar, make the navbar stick to
 		// the top of the page.
         } else if (scrollTop > stickyNavTop) {
 			$('#navBar').addClass('fixed');
-			
+
 		// If the user hasn't scrolled past the top of the navbar, use the navbar's default positioning.
 		} else {
 			$('#navBar').removeClass('fixed');
 		}
 	};
-	
+
 	$(window).on({
 		// When the user scrolls, call the stickyNav() function to determine where the navbar should be positioned.
 		scroll: function() {
 			// Call the stickyNav() function.
 			stickyNav();
-			
+
 			// If the width of the window is greater than 1000 px, traces should run down the screen.
             if (window.innerWidth > mobileMaxWidth) {
                 tracesScroll(); // in traces.js  Perf is better with one onscroll
             }
-        
+
         // When the window is resized, we need to clear the traces and regenerate them, and check the position
         // of the navbar to know if we should leave it there, or if we need to redetermine the position of the
         // top of the navbar.
 		}, resize: function() {
             // If the navbar is already fixed on the top of the screen, then we just need to leave it there.
+            clearTraces();
+            traces(); // in traces.js.  rip frames.
 			if( $('#navBar').attr('class') == "absolute fixed") {
 				// do nothing
-				
+
 			// If it isn't, redetermine the position of the top of the navbar.
 			} else {
 				stickyNavTop = $('#navBar').offset().top;
 			}
-			
+
 			// Clear the traces and regenerate them.
             clearTraces();
             generateTraces(); // in traces.js.  rip frames.
