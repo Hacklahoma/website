@@ -466,9 +466,15 @@ p .bold {
 	Style for the container of each sponsor's logo.
 */
 .sponsorLogo {
-	flex: 0 0 auto;
+	/*flex: 0 0 auto;
 	margin: auto;
 	max-width: 100%;
+	*/
+	flex: 0 0 25%;
+	margin-left: 2em;
+	margin-right: 2em;
+	height: auto;
+	margin-bottom: 2em;
 }
 
 /*
