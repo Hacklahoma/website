@@ -127,8 +127,8 @@ p .bold {
 */
 #traces {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 1px;
+    height: 1px;
     overflow: visible;
     z-index: 20;
 }
