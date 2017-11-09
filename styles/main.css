@@ -196,7 +196,7 @@ p .bold {
 	text-align: center;
 	font-size: 1em;
 	text-transform: none;
-	padding: 0.5em 1.313em;
+	padding: 0.2em 1.313em;
 	width: auto;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	-moz-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -205,7 +205,7 @@ p .bold {
 	cursor: pointer;
 	display: block;
     margin: auto;
-    margin-top: 2em;
+    margin-top: 1.4em;
     margin-bottom: 4em;
     position: relative;
     vertical-align: center;
