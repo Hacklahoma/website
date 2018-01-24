@@ -105,10 +105,16 @@
     				<p class="location">The University of Oklahoma</p>
 
     				<!-- Information button. -->
-					<form action="http://register.hacklahoma.org"
-						id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-    					<button class="infoButton"><span>REGISTER</span></button>
-    				</form>
+					<div style="margin-bottom: 4em;">
+						<form action="http://register.hacklahoma.org"
+							id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	    					<button class="infoButton"><span>REGISTER</span></button>
+	    				</form>
+						<form action="https://goo.gl/forms/qeDTTV5qSQPiglgn1"
+							id="mc-embedded-mentor-form" name="mc-embedded-mentor-form" class="validate" target="_blank" novalidate>
+	    					<button class="infoButton"><span>Mentor Form</span></button>
+	    				</form>
+					</div>
 
     				<!-- Social media logos. -->
     				<div class="socialMedia">
@@ -168,10 +174,13 @@
 
 					<h3>When? Where?</h3>
 					<p style="font-size: 1.1em">For our first hackathon, we are expecting 250 passionate students from all over the
-						world to come together at the Oklahoma Memorial Union at the University of Oklahoma in Norman on
+						world to come together at Devon Energy Hall at the University of Oklahoma in Norman on
 						March 3rd and 4th, 2018!
-					</p><br />
-					
+					</p>
+					<br/>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3259.826951011884!2d-97.44402318440036!3d35.2107791632353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b269d4244ae647%3A0xee193280b8b016ad!2sDevon+Energy+Hall%2C+Norman%2C+OK+73019!5e0!3m2!1sen!2sus!4v1516660575704" width="80%" height="550px" frameborder="0" style="border:0" allowfullscreen></iframe>
+					<br />
+
 					<br /><br />
 					<img src="images/website-aboutsectionpng.png" style="max-width: 100%; height: auto;" />
 				</section>
@@ -293,41 +302,108 @@
 				<!-- The Agenda section. -->
 				<section id="agenda">
 					<h1 class="anchor" style="text-align: center;">Agenda</h1>
-					<p style="text-align: center; font-size: 30px">
-						To be announced!
-					</p>
+					<div id="agenda-sat">
+						<h3 style="text-align: center;">Saturday, March 3</h3>
+						<table style="text-align: left; font-size: 1.1em; width: 100%; margin-bottom: 20px; border-spacing: 10px 4px;">
+	                        <tbody>
+	                            <tr>
+	                                <th>8:30 AM</th>
+	                                <td>Sponsor Check-in and Booth Setup</td>
+	                            </tr>
+	                            <tr>
+	                                <th>9:00 AM</th>
+	                                <td>Attendee Check-in</td>
+	                            </tr>
+	                            <tr>
+	                                <th>11:30 AM</th>
+	                                <td>Opening Ceremony</td>
+	                            </tr>
+	                            <tr>
+	                                <th>12:00 PM</th>
+	                                <td>Hacking Begins, Check-in Closes</td>
+	                            </tr>
+	                            <tr>
+	                                <th>1:00 PM</th>
+	                                <td>Lunch</td>
+	                            </tr>
+	                            <tr>
+	                                <th>6:00 PM</th>
+	                                <td>Dinner</td>
+	                            </tr>
+	                        </tbody>
+						</table>
+					</div>
+					<div id="agenda-sun">
+						<h3 style="text-align: center;">Sunday, March 4</h3>
+						<table style="text-align: left; font-size: 1.1em; width: 100%; margin-bottom: 20px; border-spacing: 10px 4px;">
+	                        <tbody>
+	                            <tr>
+	                                <th>8:00 AM</th>
+	                                <td>Breakfast</td>
+	                            </tr>
+	                            <tr>
+	                                <th>12:00 PM</th>
+	                                <td>Hacking Ends (Devpost Submissions Due), Lunch</td>
+	                            </tr>
+	                            <tr>
+	                                <th>1:00 PM</th>
+	                                <td>Expo and Judging</td>
+	                            </tr>
+	                            <tr>
+	                                <th>2:00 PM</th>
+	                                <td>Closing Ceremony</td>
+	                            </tr>
+								<tr>
+	                                <th>2:45 PM</th>
+	                                <td>Hacklahoma 2018 Ends, Thank you for coming!</td>
+	                            </tr>
+	                        </tbody>
+						</table>
+					</div>
+					<h3 id="text" style="font-size: 1.1em; text-align: center;">For a more detailed schedule of workshops, games, and activities, please visit <a class="neverUnderline" style="color: white" href="https://hacklahoma.org/info.html">the event info page.</a></h3>
 				</section>
 
 				<!-- The Sponsors section. -->
 				<section id="sponsors">
 					<h1 class="anchor" style="text-align: center">Sponsors</h1>
 					<div class="sponsorsLogos">
-						<div class="sponsorLogo" style="flex: 0 0 40%; margin: 4em 1em 4em;">
-							<img class="" src="images/cplogo_cropped.jpg" style="width: 100%"/>
+						<div class="sponsorLogo" id="cplogo">
+							<div class="logoHelper"></div>
+							<img class="" src="images/cplogo_cropped.jpg"/>
 						</div>
-						<div class="sponsorLogo" style="flex: 0 0 30%; margin: 1em 1em 4em;">
-							<img class="" src="images/nt_logo.png" style="width: 100%"/>
+						<div class="sponsorLogo" id="ntlogo">
+							<div class="logoHelper"></div>
+							<img class="" src="images/nt_logo.png"/>
 						</div>
 					</div>
 					<div class="sponsorsLogos" style="clear: both">
-						<!-- Sample code for adding sponsor logos. -->
-						<div class="sponsorLogo">
-							<img class="" src="images/Wolfram Alpha.png" style="width: 80%"/>
+						<div class="logoHelper"></div>
+						<div class="sponsorLogo" id="githublogo">
+							<div class="logoHelper"></div>
+							<img class="sponsorLogo" src="images/github-logo.png"/>
 						</div>
-						<div class="sponsorLogo">
-							<img class="" src="images/Headington-Dunham.png" style="width: 60%"/>
+						<div class="sponsorLogo" id="wolframlogo">
+							<div class="logoHelper"></div>
+							<img class="" src="images/Wolfram Alpha.png"/>
+						</div>
+						<div class="sponsorLogo" id="rescollogo">
+							<div class="logoHelper"></div>
+							<img class="" src="images/Headington-Dunham.png"/>
 						</div>
 					</div>
 
 					<!-- The Partners subsection -->
 					<h1 class="anchor" style="text-align: center">Partners</h1>
 					<div class="sponsorsLogos">
-						<!-- Sample code for adding sponsor logos. -->
-						<div class="sponsorLogo">
+						<div id="mlhlogo" class="sponsorLogo">
+							<div class="logoHelper"></div>
 							<img class="sponsorLogo" src="images/mlh-logo-color.png" style="width: 75%"/>
 						</div>
-						<div class="sponsorLogo">
-							<img class="sponsorLogo" src="images/github-logo.png" style="width: 80%"/>
+						<div id="smlogo" class="sponsorLogo">
+							<div class="logoHelper"></div>
+							<a class="neverUnderline" href="https://www.stickermule.com/supports/hackathons">
+								<img src="images/sticker-mule-logo-light-bg.svg"/>
+							</a>
 						</div>
 					</div>
 

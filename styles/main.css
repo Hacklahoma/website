@@ -206,7 +206,7 @@ p .bold {
 	display: block;
     margin: auto;
     margin-top: 1.4em;
-    margin-bottom: 4em;
+    margin-bottom: 0;
     position: relative;
     vertical-align: center;
 }
@@ -286,7 +286,7 @@ p .bold {
 	text-align: center;
 	padding: 18px 14px;
 	text-decoration: none;
-	height: 0.75em;
+	height: calc(3.125em - 36px);
 	vertical-align: center;
 }
 
@@ -304,7 +304,7 @@ p .bold {
 */
 #navBar a.active {
 	background-color: #912929;
-	height: 0.75em;
+	height: calc(3.125em - 36px);
 	transition: 0.5s;
 }
 
@@ -421,10 +421,30 @@ p .bold {
 	Style for the Agenda section.
 */
 #agenda {
-	display: block;
+	display: flex;
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
+	width: 90%;
+	flex-wrap: wrap;
+	-webkit-flex-flow: row wrap;
+	justify-content: space-around;
+}
+
+#agenda h1, h3 {
+	flex: 0 0 100%;
+}
+
+#agenda div {
+	display: inline;
+	flex: 0 0 50%;
+}
+
+#agenda-sat {
+
+}
+
+#agenda-sun {
+
 }
 
 /*
@@ -462,6 +482,14 @@ p .bold {
 	margin-right: auto;
 }
 
+.logoHelper {
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+
 /*
 	Style for the container of each sponsor's logo.
 */
@@ -475,15 +503,53 @@ p .bold {
 	margin-right: 2em;
 	height: auto;
 	margin-bottom: 2em;
+	display: inline-block;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.sponsorLogo a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
 }
 
 /*
 	Style for the image of each sponsor's logo.
 */
 .sponsorLogo img {
-	max-width: 100%;
-	min-width: auto;
+	max-width: 80%;
 	height: auto;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+#ntlogo {
+	flex: 0 1 34%;
+}
+
+#cplogo {
+	flex: 0 1 50%;
+}
+
+#githublogo {
+	flex: 0 1 26%;
+}
+
+#wolframlogo {
+	flex: 0 1 30%;
+}
+
+#rescollogo {
+	flex: 0 1 20%;
+}
+
+#mlhlogo {
+	flex: 0 1 30%;
+}
+
+#smlogo {
+	flex: 0 1 40%;
 }
 
 /*

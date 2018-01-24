@@ -106,6 +106,10 @@
          padding: 0;
      }
 
+     #agenda div {
+     	flex: 0 0 100%;
+     }
+
      .sponsorLogo {
         flex: 0 0 auto;
      	margin: 2em;
