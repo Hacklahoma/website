@@ -92,6 +92,15 @@
      	font-size: 6vw;
      }
 
+     #embeddedmap {
+         width: 90%;
+         height: 300px;
+     }
+
+     .notmobile {
+         display: none;
+     }
+
      #about {
          width: calc(100% - 4em);
      }
@@ -101,8 +110,8 @@
      }
 
      #agenda {
-         width: calc(100% - 4em);
-         margin: 2em;
+         width: calc(100% - 2em);
+         margin: 1em;
          padding: 0;
      }
 
@@ -111,9 +120,13 @@
      }
 
      .sponsorLogo {
-        flex: 0 0 auto;
-     	margin: 2em;
+        flex: 0 0 80% !important;
+     	margin: 2em 0;
      	max-width: 100%;
+     }
+
+     .sponsorLogo img {
+         max-width: 100%;
      }
 
      #judges {
