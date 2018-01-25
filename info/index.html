@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!--
+			  /\_/\
+			 ( o.o )
+		      > ^ <
+	  The info page for Hacklahoma.
+-->
+<html lang="en">
+	<head>
+		<!-- Charset attribute for the webpage. -->
+		<meta charset="UTF-8" />
+
+		<!-- Title of page. -->
+		<title >HACKLAHOMA</title>
+
+        <!-- Favicons etc -->
+        <link rel="apple-touch-icon" size="180x180" href="../images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" size="32x32" href="../images/favicon-32x32.png">
+        <link rel="icon" type="image/png" size="16x16" href="../images/favicon-16x16.png">
+        <link rel="manifest" href="../images/manifest.json">
+        <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#841617">
+        <link rel="shortcut icon" href="../images/favicon.ico">
+        <meta name="msapplication-config" content="../images/browserconfig.xml">
+        <meta name="theme-color" content="#333333">
+
+		<!-- Description for search engines. -->
+		<meta name="description" content="The first hackathon to ever take place in Oklahoma. Come create with us March 3-4 2018." />
+
+		<!-- Viewport width for mobile devices. -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
+        <!-- Facebook pixel stuff. -->
+        <meta property="og:title" content="HACKLAHOMA">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://hacklahoma.org/images/facebookCardImage.png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:url" content="https://hacklahoma.org">
+        <meta property="og:description" content="The first hackathon to ever take place in Oklahoma. Come create with us March 3-4 2018.">
+
+        <!-- Twitter pixel stuff. -->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@hacklahoma">
+        <meta name="twitter:title" content="HACKLAHOMA">
+        <meta name="twitter:description" content="The first hackathon to ever take place in Oklahoma. Come create with us March 3-4 2018.">
+        <meta name="twitter:image" content="https://hacklahoma.org/images/twitterCardImage.png">
+        <meta property="og:image:type" content="image/png">
+        <meta name="twitter:image:width" content="512">
+        <meta name="twitter:image:width" content="512">
+
+		<!-- Facebook Pixel Code -->
+		<script>
+		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+		n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+		document,'script','https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '1555823664723200'); // Insert your pixel ID here.
+		fbq('track', 'PageView');
+		</script>
+		<noscript><img height="1" width="1" style="display:none"
+		src="https://www.facebook.com/tr?id=1555823664723200&ev=PageView&noscript=1"
+		/></noscript>
+		<!-- DO NOT MODIFY -->
+		<!-- End Facebook Pixel Code -->
+
+		<!-- FB Pixel that tracks when people visit our website -->
+		<script>
+		fbq('track', 'ViewContent');
+		</script>
+
+
+		<!-- Style sheets. -->
+		<link rel="stylesheet" type="text/css" href="../styles/main.css" />
+        <link rel="stylesheet" type="text/css" href="../styles/mobile.css" />
+        <link rel="stylesheet" type="text/css" href="../styles/menu-icon.css" />
+        <link rel="stylesheet" type="text/css" href="styles/info.css" />
+        <link rel="stylesheet" type="text/css" href="styles/infoMobile.css" />
+        <link rel="stylesheet" type="text/css" href="styles/bootstrap-carousel.min.css" />
+
+		<!-- Scripts. -->
+		<script type="text/javascript" src="../scripts/jquery.min.js"> </script>
+        <script src="../scripts/snap.svg-min.js"></script>
+        <script src="../scripts/hyperlinkhover.js"></script>
+        <script src="scripts/traces.js"></script>
+  		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<!-- Pattern styling. -->
+        <svg id="traces"></svg>
+
+        <!-- Where all page content goes. (honestly can't remember why this is here but website looks wonky without it) -->
+		<div id="holder" style="height: 100%; min-height: 100%; position: relative;">
+			<!-- Header of the page. -->
+			<header id="header">
+				<!-- Logo for the header/landing page. -->
+                <div class="header-info">
+				    <img src="../images/hacklahoma_artisticlogo_transparent.svg" class="logo" id="logo" alt="Hacklahoma Logo" />
+                </div>
+
+                <!-- Information about Hacklahoma on landing page. -->
+                <div class="header-info">
+    	            <img src="../images/gear-white.png" alt="Hacklahoma letter icon" style="margin=top: 0; max-width: 100%; height: auto">
+    				
+    				<p style="font-size: 32px; margin-top: 2em; margin-bottom: 3em;">Welcome to Hacklahoma!</p>
+
+    				<!-- Social media logos. -->
+    				<div class="socialMedia">
+						<a class="neverUnderline" target='_blank' href="https://www.facebook.com/Hacklahoma/"><img src="../images/facebook.png" class="socMedLogo" alt="Facebook" /></a><br />
+						<a class="neverUnderline" target='_blank' href="https://twitter.com/hacklahoma"><img src="../images/twitter.png" class="socMedLogo" alt="Twitter" /></a><br />
+						<a class="neverUnderline" target='_blank' href="https://www.instagram.com/hacklahoma/"><img src="../images/instagram.png" class="socMedLogo" alt="Instagram" /></a>
+					</div>
+					
+					<div id="slackAndWifi">
+						<a id="slackInfo" class="neverUnderline" target='_blank' href="https://hacklahoma18.slack.com" alt="Slack">
+							<svg width="50" height="50" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path d="M165.964 15.838c-3.89-11.975-16.752-18.528-28.725-14.636-11.975 3.89-18.528 16.752-14.636 28.725l58.947 181.365c4.048 11.187 16.132 17.473 27.732 14.135 12.1-3.483 19.475-16.334 15.614-28.217L165.964 15.838" fill="#DFA22F"/><path d="M74.626 45.516C70.734 33.542 57.873 26.989 45.9 30.879 33.924 34.77 27.37 47.631 31.263 59.606l58.948 181.366c4.047 11.186 16.132 17.473 27.732 14.132 12.099-3.481 19.474-16.332 15.613-28.217L74.626 45.516" fill="#3CB187"/><path d="M240.162 166.045c11.975-3.89 18.526-16.75 14.636-28.726-3.89-11.973-16.752-18.527-28.725-14.636L44.708 181.632c-11.187 4.046-17.473 16.13-14.135 27.73 3.483 12.099 16.334 19.475 28.217 15.614l181.372-58.93" fill="#CE1E5B"/><path d="M82.508 217.27l43.347-14.084-14.086-43.352-43.35 14.09 14.089 43.347" fill="#392538"/><path d="M173.847 187.591c16.388-5.323 31.62-10.273 43.348-14.084l-14.088-43.36-43.35 14.09 14.09 43.354" fill="#BB242A"/><path d="M210.484 74.706c11.974-3.89 18.527-16.751 14.637-28.727-3.89-11.973-16.752-18.526-28.727-14.636L15.028 90.293C3.842 94.337-2.445 106.422.896 118.022c3.481 12.098 16.332 19.474 28.217 15.613l181.371-58.93" fill="#72C5CD"/><path d="M52.822 125.933c11.805-3.836 27.025-8.782 43.354-14.086-5.323-16.39-10.273-31.622-14.084-43.352l-43.36 14.092 14.09 43.346" fill="#248C73"/><path d="M144.16 96.256l43.356-14.088a546179.21 546179.21 0 0 0-14.089-43.36L130.07 52.9l14.09 43.356" fill="#62803A"/></svg>
+						</a>
+						
+						<div id="wifiInfo">
+							<img src="images/wifi-icon-1.png" style="padding-left: 1em; float: left;" />
+							<p>SSID: OUWIFI</p>
+							<p>Password: PASSWORD</p>
+						</div>
+					</div>
+                </div>
+			</header>
+
+			<!-- The nav bar. -->
+	        <div id="navWrapper" class="menuClosed">
+				<nav id="navBar" class="absolute">
+					<a href="#scheduleInfo" id="scheduleInfoLink" class="neverUnderline">Schedule</a>
+					<a href="#locationInfo" id="locationInfoLink" class="neverUnderline">Location</a>
+					<a href="#floorPlansInfo" id="floorPlansInfoLink" class="neverUnderline">Floor Plans</a>
+					<a href="#arrivalAndParkingInfo" id="aAndPInfoLink" class="neverUnderline">Arrival & Parking</a>
+					<a href="#faqInfo" id="faqInfoLink" class="neverUnderline">FAQ</a>
+					<a href="#footer" id="footerLink" class="neverUnderline">Contact</a>
+				</nav>
+			</div>
+
+            <input id="menu-trigger" class="menu-trigger" type="checkbox" autocomplete="off"/>
+            <label for="menu-trigger" id="menu-trigger-label">
+                <div class="menu-icon">
+                    <section class="menu-box">
+                        <div class="menu-icon hamburger" data-icon="hamburger">
+                            <span class="first"></span>
+                            <span class="second"></span>
+                            <span class="third"></span>
+                        </div>
+                    </section>
+                </div>
+            </label>
+
+            <script src="../scripts/mobileMenu.js"></script>
+
+			<!-- The main content. -->
+			<div id="contentPane">
+				<!-- The Schedule section. -->
+				<section id="scheduleInfo">
+					<h1 class="anchor" style="text-align: center;">Schedule</h1>
+					<div style="margin-left: auto; margin-right: auto;">
+						<table align="center">
+							<tr>
+								<td>
+									<table style="margin-left: auto; margin-right: auto;" align="center">
+										<tr>
+											<th style="text-align: center;"><h3>March 3rd</h3></th>
+										</tr>
+										<tr>
+											<td><b>8:30 AM</b> Sponsor Check-In/Booth Setup Opens</td>
+										</tr>
+										<tr>
+											<td><b>9:00 AM</b> Attendee Check-In Opens</td>
+										</tr>
+										<tr>
+											<td><b>11:30 AM</b> Opening Ceremony</td>
+										</tr>
+										<tr>
+											<td><b>12:00 PM</b> HACKING BEGINS/Check-In Closes</td>
+										</tr>
+										<tr>
+											<td><b>12:30 PM</b> <u>Team Forming</u> in Activity Room</td>
+										</tr>
+										<tr>
+											<td><b>1:00 PM</b> Lunch</td>
+										</tr>
+										<tr>
+											<td><b>2:00 PM</b> <u>Idea Brainstorming Session</u> in Activity Room</td>
+										</tr>
+										<tr>
+											<td><b>3:00 PM</b> Workshop (TBD) in Workshop Room A</td>
+										</tr>
+										<tr>
+											<td><b>3:30 PM</b> <u>Peer Feedback on Ideas</u> in Activity Room</td>
+										</tr>
+										<tr>
+											<td><b>4:00 PM</b> Workshop (TBD) in Workshop Room A</td>
+										</tr>
+										<tr>
+											<td><b>5:00 PM</b> Workshop: <u>How to Demo and Why You Should</u><br /> in Workshop Room A</td>
+										</tr>
+										<tr>
+											<td><b>6:00 PM</b> Dinner</td>
+										</tr>
+										<tr>
+											<td><b>7:30 PM</b> <u>Evening Yoga</u> in Activity Room</td>
+										</tr>
+										<tr>
+											<td><b>8:30 PM</b> <u>MLH Cup Stacking</u> in Activity Room</td>
+										</tr>
+										<tr>
+											<td><b>10:00 PM</b> <u>Game Night</u> in Activity Room</td>
+										</tr>
+									</table>
+								</td>
+								<td>
+									<table style="margin-left: auto; margin-right: auto;" align="center">
+										<tr>
+											<th style="text-align: center;"><h3>March 4th</h3></th>
+										</tr>
+										<tr>
+											<td><b>8:00 AM</b> Breakfast</td>
+										</tr>
+										<tr>
+											<td><b>12:00 PM</b> HACKING ENDS | LUNCH</td>
+										</tr>
+										<tr>
+											<td><b>12:30 PM</b> Lunch</td>
+										</tr>
+										<tr>
+											<td><b>1:00 PM</b> Judging/Expo</td>
+										</tr>
+										<tr>
+											<td><b>2:00 PM</b> Closing Ceremony</td>
+										</tr>
+										<tr>
+											<td><b>2:45 PM</b> HACKLAHOMA 2018 ENDS</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</section>
+
+				<!-- The Location section. -->
+				<section id="locationInfo">
+					<h1 class="anchor" style="text-align: center; margin: auto;">Location</h1>
+					<div style="width: 65%; margin-left: auto; margin-right: auto;">
+						<h3>Devon Energy Hall</h3>
+						<p>110 West Boyd Street Norman, OK 73019</p>
+						<div class="googleMapsIframe">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3259.8269510118616!2d-97.44402318467694!3d35.21077916323586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b269d4244ae647%3A0xee193280b8b016ad!2sDevon+Energy+Hall%2C+Norman%2C+OK+73019!5e0!3m2!1sen!2sus!4v1516570006552" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+						</div>
+					</div>
+				</section>
+				
+				<!-- The Floor Plans section. -->
+				<section id="floorPlansInfo">
+					<h1 class="anchor" style="text-align: center; margin: auto;">Floor Plans</h1>
+					<div id="floorPlans" class="carousel slide" data-ride="carousel" data-pause="hover">
+						<!-- Indicators -->
+						<ul class="carousel-indicators">
+							<li data-target="#floorPlans" data-slide-to="0" class="active"></li>
+							<li data-target="#floorPlans" data-slide-to="1"></li>
+							<li data-target="#floorPlans" data-slide-to="2"></li>
+							<li data-target="#floorPlans" data-slide-to="3"></li>
+							<li data-target="#floorPlans" data-slide-to="4"></li>
+						</ul>
+						
+						<!-- The slideshow -->
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img src="images/floor 1.png" alt="First Floor" width="1280" height="720">
+							</div>
+							<div class="carousel-item">
+								<img src="images/floor 2.png" alt="Second Floor"  width="1280" height="720">
+							</div>
+							<div class="carousel-item">
+								<img src="images/floor 3.png" alt="Third Floor" width="1280" height="720">
+							</div>
+							<div class="carousel-item">
+								<img src="images/floor 4.png" alt="Fourth Floor" width="1280" height="720">
+							</div>
+							<div class="carousel-item">
+								<img src="images/floor 5.png" alt="Fifth Floor" width="1280" height="720">
+							</div>
+						</div>
+						
+						<!-- Left and right controls -->
+						<a id="prevArrow" class="carousel-control-prev" href="#floorPlans" data-slide="prev">
+							<span class="carousel-control-prev-icon"></span>
+						</a>
+						<a id="nextArrow" class="carousel-control-next" href="#floorPlans" data-slide="next">
+							<span class="carousel-control-next-icon"></span>
+						</a>
+					</div>
+				</section>
+
+				<!-- The Arrival and Parking section. -->
+				<section id="arrivalAndParkingInfo">
+					<h1 class="anchor" style="text-align: center;">Arrival & Parking</h1>
+					<p style="text-align: center; font-size: 30px">
+						To be announced!
+					</p>
+				</section>
+
+				<!-- The FAQ section. -->
+				<section id="faqInfo">
+					<h1 class="anchor" style="text-align: center; margin: auto;">FAQ</h1>
+					<div id="faqContent">
+                        <div id="faqItem">
+							<h2>What is a hackathon?</h2>
+							<h3 style="font-size: 1.1em">
+                                A hackathon is best described
+                                as an “invention marathon”. Anyone who has an interest in technology attends one to learn,
+                                build & share their creations over the course of a weekend in a relaxed and welcoming atmosphere. - MLH
+                            </h3>
+						</div>
+						<div id="faqItem">
+							<h2>Who can attend Hacklahoma?</h2>
+							<h3 style="font-size: 1.1em">
+                                Any university student 18 and older <u>of any major</u> can participate as a hacker!
+                            </h3>
+						</div>
+						<div id="faqItem">
+							<h2>Can beginners attend?</h2>
+							<h3 style="font-size: 1.1em">
+                                Of course! We accept people of <u>all skill levels</u>! We'll have workshops before
+                                and during the event! We'll also have plenty of mentors! Hackathons are a learning experience! :D
+                            </h3>
+						</div>
+                        <div id="faqItem">
+							<h2>Do I need to be an OU student?</h2>
+							<h3 style="font-size: 1.1em">
+                                Nope! Any student from any school is eligible to apply for Hacklahoma!
+                            </h3>
+						</div>
+                        <div id="faqItem">
+							<h2>Do I have to be a programmer?</h2>
+							<h3 style="font-size: 1.1em">
+								No, you don't need any experience in programming to attend! Regardless of major or experience, we welcome all
+								students who are genuinely interested in learning and technology.
+							</h3>
+                        </div>
+                       <div id="faqItem">
+							<h2>Do I need a team in order to participate?</h2>
+							<h3 style="font-size: 1.1em">
+								Nope! You can always go solo if that's your style, otherwise you are allowed to have up to four people at the
+								maximum. We will have team formation sessions in the future, which we'll announce on our social media and email!
+							</h3>
+						</div>
+                        <div id="faqItem">
+							<h2>Do I have to pay to attend Hacklahoma?</h2>
+							<h3 style="font-size: 1.1em">Nope! Hacklahoma is free for everyone. All meals, snacks, and refreshments are also free!</h3>
+						</div>
+						<div id="faqItem">
+							<h2>But what if I'm not a student?</h2>
+							<h3 style="font-size: 1.1em">
+								You are more than welcome to participate as a volunteer or mentor! If you are interested in this, contact us at
+								<a href="mailto:team@hacklahoma.org" class="neverUnderline" style="color: #FFFFFF">team@hacklahoma.org</a>.
+								We will have a sign up form available soon!
+							</h3>
+						</div>
+						<div id="faqItem">
+							<h2>Can I start working before Hacklahoma starts?</h2>
+							<h3 style="font-size: 1.1em">
+								No, hackers are not allowed to work on their projects before Hacklahoma's official hacking period. You are, however,
+								allowed to come up with ideas, plan, and prepare!
+							</h3>
+						</div>
+						<div id="faqItem">
+							<h2>What should I bring?</h2>
+							<h3 style="font-size: 1.1em">
+								Bring your school ID for registration! We also recommend bringing laptops, any chargers, cell phones, a pillow, a sleeping bag, toiletries, an extra set of
+								clothes, and a refillable water bottle. You could also bring an extension cord or additional hardware
+								(which will need to be approved) for your hack just in case.
+							</h3>
+						</div>
+						<div id="faqItem">
+							<h2>What should I not bring?</h2>
+							<h3 style="font-size: 1.1em">
+								Any weapons, drugs, alcohol, and anything illegal are strictly prohibited. If you're not sure about bringing
+								something, please ask us about it in advance!
+							</h3>
+						</div>
+						<div id="faqItem">
+							<h2>Will you be offering travel reimbursement?</h2>
+							<h3 style="font-size: 1.1em">
+								We plan to! Currently, we are developing a budget for travel reimbursement and will let you know more about it on our
+								social media pages or through email!
+							</h3>
+						</div>
+                        <div id="faqItem">
+							<h2>Where will I sleep?</h2>
+							<h3 style="font-size: 1.1em">
+                                We'll have a dedicated nap room during the event!
+                            </h3>
+						</div>
+						<div id="faqItem">
+							<h2>Any other rules?</h2>
+							<h3 style="font-size: 1.1em">
+								Everyone is required to follow the
+								<a target='_blank' href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" class="neverUnderline" style="color: #FFFFFF;">
+									MLH Code of Conduct</a>
+                                and the
+                                <a target='_blank' href="https://www.ou.edu/studentconduct/policies.html" class="neverUnderline" style="color: #FFFFFF;">
+									OU Student Conduct</a>.
+							</h3>
+						</div>
+						<div id="faqItem">
+							<h2>I didn't find my question...</h2>
+							<h3 style="font-size: 1.1em">
+								Don't worry! You can email us your inquiries at
+								<a href="mailto:team@hacklahoma.org" class="neverUnderline" style="color: #FFFFFF">team@hacklahoma.org</a>
+								and we will get back to you as soon as possible.
+							</h3>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<!-- The footer. -->
+			<footer id="footer">
+				<p style="margin-top: 20px">Organized by the OU Student Chapter ACM ❤</p>
+
+				<p style="font-size: 18px;"><a href="mailto:team@hacklahoma.org" class="neverUnderline" style="color: #333333;">team@hacklahoma.org</a></p>
+
+				<p style="font-size: 16px;"><a target='_blank' href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" class="neverUnderline" style="color: #333333;">MLH Code of Conduct</a></p><br />
+			</footer>
+		</div>
+
+		<!-- Scripts that require access to DOM. -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="scripts/scripts.js"></script>
+
+		<!-- MLH Trust Badge -->
+		<a target='_blank' id="mlh-trust-badge" class="neverUnderline" href="https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=white" target="_blank">
+			<img src="https://s3.amazonaws.com/logged-assets/trust-badge/2018/white.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%">
+		</a>
+	</body>
+</html>
