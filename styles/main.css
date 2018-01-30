@@ -436,7 +436,7 @@ p .bold {
 
 #agenda div {
 	display: inline;
-	flex: 0 0 50%;
+	flex: 0 1 auto;
 }
 
 #agenda-sat {
@@ -477,9 +477,10 @@ p .bold {
 	flex-wrap: wrap;
 	-webkit-flex-flow: row wrap;
 	justify-content: space-around;
-	width: 90%;
+	width: 70%;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 4em;
 }
 
 .logoHelper {
@@ -525,7 +526,7 @@ p .bold {
 }
 
 #ntlogo {
-	flex: 0 1 34%;
+	flex: 0 1 36%;
 }
 
 #cplogo {
@@ -533,15 +534,15 @@ p .bold {
 }
 
 #githublogo {
-	flex: 0 1 26%;
-}
-
-#wolframlogo {
 	flex: 0 1 30%;
 }
 
+#wolframlogo {
+	flex: 0 1 18%;
+}
+
 #rescollogo {
-	flex: 0 1 20%;
+	flex: 0 1 18%;
 }
 
 #mlhlogo {
@@ -550,6 +551,14 @@ p .bold {
 
 #smlogo {
 	flex: 0 1 40%;
+}
+
+#garminlogo {
+	flex: 0 1 18%;
+}
+
+#ousaalogo {
+	flex: 0 1 18%;
 }
 
 /*

@@ -1,7 +1,8 @@
 /* Use with main.css
  * Just includes some additional rules for small displays. */
 
-@media (max-width: 1000px) {
+# changed to 1100 to cover 1080p displays in portrait
+@media (max-width: 1100px) {
     .logo {
         max-width: 80vw;
         width: 350px;
@@ -11,7 +12,6 @@
     }
 
     .header-info {
-        display: block;
         width: 100%;
     }
 
@@ -52,6 +52,11 @@
 
      .logo {
         margin-bottom: 0;
+     }
+
+     .header-info {
+         width: 100%;
+         display: block;
      }
 
      #navWrapper {
