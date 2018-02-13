@@ -1,0 +1,9 @@
+@media (max-width: 750px) {
+	.anchor {
+		font-size: 3em;
+	}
+	
+	#navBar a {
+		font-size: 0.5em;
+	}
+}
