@@ -40,19 +40,7 @@
     .sponsorLogo {
        flex: 0 0 auto;
        margin: 2em;
-       max-width: 80%;
-    }
-
-    #ntlogo a {
-    	margin: 2em;
-    }
-
-    #cplogo a {
-    	margin: 2em;
-    }
-
-    #pcilogo a {
-    	margin: 2em;
+       max-width: 40vh;
     }
 }
 
@@ -158,5 +146,17 @@
 
      .socialMedia {
      	right: 3vw !important;
+     }
+
+     #ntlogo a {
+     	margin: 2em 0;
+     }
+
+     #cplogo a {
+     	margin: 2em 0;
+     }
+
+     #pcilogo a {
+     	margin: 2em 0;
      }
 }
