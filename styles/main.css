@@ -465,6 +465,11 @@ p .bold {
 	-webkit-box-shadow: 0 0 3em #000000;
 }
 
+#sponsors hr {
+	width: 80%;
+	border-color: #dddddd;
+}
+
 /*
 	Content wrapper for the Sponsors section.
 */
@@ -477,10 +482,11 @@ p .bold {
 	flex-wrap: wrap;
 	-webkit-flex-flow: row wrap;
 	justify-content: space-around;
-	width: 90%;
+	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 4em;
+	margin-bottom: 2em;
+	margin-top: 2em;
 }
 
 .logoHelper {
@@ -503,6 +509,7 @@ p .bold {
 	margin-left: 2em;
 	margin-right: 2em;
 	height: auto;
+	margin-top: 2em;
 	margin-bottom: 2em;
 	display: inline-block;
 	vertical-align: middle;
@@ -556,8 +563,18 @@ p .bold {
 	margin: 0;
 }
 
+#twlogo {
+	flex: 0 1 30%;
+	margin: 0;
+}
+
+#devonlogo {
+	flex: 0 1 34%;
+	margin: 0;
+}
+
 #hobbylobbylogo {
-	flex: 0 1 26%;
+	flex: 0 1 32%;
 }
 
 #githublogo {
@@ -667,4 +684,19 @@ p .bold {
 */
 #mlh-trust-badge img:hover {
 	top: 0px;
+}
+
+.googleMapsIframe {
+	position: relative;
+	padding-bottom: 60%;
+	padding-top: 1em;
+	height: 0;
+	overflow: hidden;
+}
+.googleMapsIframe iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
