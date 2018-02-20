@@ -18,7 +18,7 @@ $(document).ready(function() {
         
         allDaySlot: false,
         
-        slotDuration: '00:15:00',
+        slotDuration: '00:10:00',
         
         minTime: '08:00',
         maxTime: '24:00',
@@ -47,6 +47,11 @@ $(document).ready(function() {
         		end: '2018-03-03T12:30'
         	},
         	{
+        		title: 'Vitech Challenge and Tech Talk in Workshop Room A',
+        		start: '2018-03-03T12:05',
+        		end: '2018-03-03T12:35'
+        	},
+        	{
         		title: 'Team Forming in Activity Room',
         		start: '2018-03-03T12:30',
         		end: '2018-03-03T13:00'
@@ -57,17 +62,17 @@ $(document).ready(function() {
         		end: '2018-03-03T14:00'
         	},
         	{
-        		title: 'Idea Brainstorming Session in Workshop Room A',
+        		title: 'Idea Brainstorming Session in Activity Room',
         		start: '2018-03-03T14:00',
         		end: '2018-03-03T14:30'
-        	}, 
+        	},
         	{
         		title: 'Git Workshop in Workshop Room A',
         		start: '2018-03-03T15:00',
         		end: '2018-03-03T15:30'
         	},
         	{
-        		title: 'Entrepreneurship/How to Turn Your Hack Into a Startup in Workshop Room B',
+        		title: 'Entrepreneurship/\nHow to Turn Your Hack Into a Startup in Workshop Room B',
         		start: '2018-03-03T15:00',
         		end: '2018-03-03T15:30'
         	},
@@ -82,17 +87,17 @@ $(document).ready(function() {
         		end: '2018-03-03T16:30'
         	},
         	{
-        		title: 'Professional Development Workshop in Workshop Room B',
+        		title: 'Technical Interview Prep in Workshop Room B',
         		start: '2018-03-03T16:00',
         		end: '2018-03-03T16:30'
         	},
         	{
-        		title: 'How to Demo and Why You Should/Slideshow Karaoke Workshop in Workshop Room A',
+        		title: 'How to Demo and Why You Should/\nSlideshow Karaoke Workshop in Workshop Room A',
         		start: '2018-03-03T17:00',
         		end: '2018-03-03T17:30'
         	},
         	{
-        		title: 'VR Workshop in Workshop Room B',
+        		title: 'How to Prepare For a Full Time Job in Software Development\n in Workshop Room B',
         		start: '2018-03-03T17:00',
         		end: '2018-03-03T17:30'
         	},
@@ -105,6 +110,11 @@ $(document).ready(function() {
         		title: 'Evening Yoga in Activity Room',
         		start: '2018-03-03T19:30',
         		end: '2018-03-03T20:00'
+        	},
+        	{
+        		title: 'HQ Trivia with Vitech in Workshop Room A',
+        		start: '2018-03-03T20:00',
+        		end: '2018-03-03T20:30'
         	},
         	{
         		title: 'MLH Cup Stacking in Activity Room',

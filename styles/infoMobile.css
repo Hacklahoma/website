@@ -3,6 +3,19 @@
 		font-size: 3em;
 	}
 	
+	.fc-time span {
+		font-size: 0.8em;
+	}
+	
+	.fc-title {
+		letter-spacing: -1px;
+		font-size: 0.7em;
+	}
+	
+	.fc-event {
+		line-height: 1;
+	}
+	
 	#navBar a {
 		font-size: 0.5em;
 	}
