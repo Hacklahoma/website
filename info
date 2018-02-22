@@ -135,7 +135,7 @@
 					<a href="#scheduleInfo" id="scheduleInfoLink" class="neverUnderline">Schedule</a>
 					<a href="#locationInfo" id="locationInfoLink" class="neverUnderline">Location</a>
 					<a href="#floorPlansInfo" id="floorPlansInfoLink" class="neverUnderline">Floor Plans</a>
-					<a href="#arrivalAndParkingInfo" id="aAndPInfoLink" class="neverUnderline">Arrival & Parking</a>
+					<a href="#resourcesInfo" id="resourcesInfoLink" class="neverUnderline">Resources</a>
 					<a href="#faqInfo" id="faqInfoLink" class="neverUnderline">FAQ</a>
 					<a href="#footer" id="footerLink" class="neverUnderline">Contact</a>
 				</nav>
@@ -805,13 +805,12 @@
 				</section>
 
 				<!-- The Arrival and Parking section. -->
-				<section id="arrivalAndParkingInfo">
-					<h1 class="anchor" style="text-align: center;">Arrival & Parking</h1>
+				<section id="resourcesInfo">
+					<h1 class="anchor" style="text-align: center;">Resources</h1>
 					<p style="text-align: center; font-size: 30px">
-						<div style="width: 65%; margin-left: auto; margin-right: auto;">
-							<div class="googleMapsIframe">
-								<iframe src="https://www.google.com/maps/d/embed?mid=1mKRBR-mSlaId0mzKxDYRovgzPIjB25Rf" width="600" height="450"></iframe>
-							</div>
+						<div style="width: 65%; margin-left: auto; margin-right: auto; font-size: 2em;">
+							<!-- Click <a href="" class="neverUnderline" style="color: #912929;">here</a> for resources available to attendees during the hackathon!  -->
+							Coming soon!
 						</div>
 					</p>
 				</section>
@@ -820,57 +819,11 @@
 				<section id="faqInfo">
 					<h1 class="anchor" style="text-align: center; margin: auto;">FAQ</h1>
 					<div id="faqContent">
-                        <div id="faqItem">
-							<h2>What is a hackathon?</h2>
-							<h3 style="font-size: 1.1em">
-                                A hackathon is best described
-                                as an “invention marathon”. Anyone who has an interest in technology attends one to learn,
-                                build & share their creations over the course of a weekend in a relaxed and welcoming atmosphere. - MLH
-                            </h3>
-						</div>
-						<div id="faqItem">
-							<h2>Who can attend Hacklahoma?</h2>
-							<h3 style="font-size: 1.1em">
-                                Any university student 18 and older <u>of any major</u> can participate as a hacker!
-                            </h3>
-						</div>
-						<div id="faqItem">
-							<h2>Can beginners attend?</h2>
-							<h3 style="font-size: 1.1em">
-                                Of course! We accept people of <u>all skill levels</u>! We'll have workshops before
-                                and during the event! We'll also have plenty of mentors! Hackathons are a learning experience! :D
-                            </h3>
-						</div>
-                        <div id="faqItem">
-							<h2>Do I need to be an OU student?</h2>
-							<h3 style="font-size: 1.1em">
-                                Nope! Any student from any school is eligible to apply for Hacklahoma!
-                            </h3>
-						</div>
-                        <div id="faqItem">
-							<h2>Do I have to be a programmer?</h2>
-							<h3 style="font-size: 1.1em">
-								No, you don't need any experience in programming to attend! Regardless of major or experience, we welcome all
-								students who are genuinely interested in learning and technology.
-							</h3>
-                        </div>
                        <div id="faqItem">
 							<h2>Do I need a team in order to participate?</h2>
 							<h3 style="font-size: 1.1em">
 								Nope! You can always go solo if that's your style, otherwise you are allowed to have up to four people at the
 								maximum. We will have team formation sessions in the future, which we'll announce on our social media and email!
-							</h3>
-						</div>
-                        <div id="faqItem">
-							<h2>Do I have to pay to attend Hacklahoma?</h2>
-							<h3 style="font-size: 1.1em">Nope! Hacklahoma is free for everyone. All meals, snacks, and refreshments are also free!</h3>
-						</div>
-						<div id="faqItem">
-							<h2>But what if I'm not a student?</h2>
-							<h3 style="font-size: 1.1em">
-								You are more than welcome to participate as a volunteer or mentor! If you are interested in this, contact us at
-								<a href="mailto:team@hacklahoma.org" class="neverUnderline" style="color: #FFFFFF">team@hacklahoma.org</a>.
-								We will have a sign up form available soon!
 							</h3>
 						</div>
 						<div id="faqItem">
@@ -898,8 +851,8 @@
 						<div id="faqItem">
 							<h2>Will you be offering travel reimbursement?</h2>
 							<h3 style="font-size: 1.1em">
-								We plan to! Currently, we are developing a budget for travel reimbursement and will let you know more about it on our
-								social media pages or through email!
+								Yes, we are offering a <u>limited</u> amount of travel reimbursement of up to $25 a person! Carpools of 4 will be able to receive up to $100.
+								To be eligible for reimbursement, hackers need to submit a project on DevPost and be present at the hackathon.
 							</h3>
 						</div>
                         <div id="faqItem">
@@ -907,6 +860,13 @@
 							<h3 style="font-size: 1.1em">
                                 We'll have a dedicated nap room during the event!
                             </h3>
+						</div>
+						<div id="faqItem">
+							<h2>Where will I park?</h2>
+							<h3 style="font-size: 1.1em">
+								Click <a href="https://www.google.com/maps/d/viewer?mid=1mKRBR-mSlaId0mzKxDYRovgzPIjB25Rf&ll=35.20848343877381%2C-97.43958950000001&z=17" class="neverUnderline" target="_blank" style="color: #FFFFFF;">here</a>
+								for a map of where you are allowed to park on campus.
+							</h3>
 						</div>
 						<div id="faqItem">
 							<h2>Any other rules?</h2>
