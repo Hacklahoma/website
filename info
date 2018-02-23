@@ -579,7 +579,7 @@
 																				<div class="fc-time" data-start="3:00" data-full="3:00 PM - 3:30 PM">
 																					<span>3:00 - 3:30</span>
 																				</div>
-																				<div class="fc-title">
+																				<div class="fc-title small-text">
 																					Entrepreneurship/
 																					<br>
 																					How to Turn Your Hack Into a Startup in Workshop Room B
@@ -613,16 +613,15 @@
 																				<div class="fc-time" data-start="5:00" data-full="5:00 PM - 5:30 PM">
 																					<span>5:00 - 5:30</span>
 																				</div>
-																				<div class="fc-title">
-																					How to Demo and Why You Should/
-																					Slideshow Karaoke Workshop in Workshop Room A
+																				<div class="fc-title small-text">
+																					How to Demo and Why You Should/Slideshow Karaoke Workshop in Workshop Room A
 																				</div>
 																			</div><div class="fc-bg"></div></a><a class="fc-time-grid-event fc-v-event fc-event fc-start fc-end" style="background-color: rgb(145, 41, 41); border-color: rgb(145, 41, 41); top: 1620px; bottom: -1710px; z-index: 2; left: 50%; right: 0%;">
 																			<div class="fc-content">
 																				<div class="fc-time" data-start="5:00" data-full="5:00 PM - 5:30 PM">
 																					<span>5:00 - 5:30</span>
 																				</div>
-																				<div class="fc-title">
+																				<div class="fc-title small-text">
 																					How to Prepare For a Full Time Job in Software Development
 																					<br>
 																					in Workshop Room B
