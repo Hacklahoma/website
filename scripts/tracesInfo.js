@@ -211,8 +211,8 @@ function setup() {
     let scheduleTop = $("#scheduleInfo").children("h1").offset().top;
     let scheduleHeight = $("#scheduleInfo").outerHeight() - $("#scheduleInfo").children("h3").outerHeight();
 
-    let arrivalAndParkingTop = $("#arrivalAndParkingInfo").children("h1").offset().top;
-    let arrivalAndParkingHeight = $("#arrivalAndParkingInfo").outerHeight();
+    let resourcesTop = $("#resourcesInfo").children("h1").offset().top;
+    let resourcesHeight = $("resourcesInfo").outerHeight();
 
     // center of logo
     waypointsOne.push(gridify(new coord(logoLeft + logoWidth * 0.5 - spacing * lanes * 0.5, logoTop + logoHeight * 0.5)));
@@ -231,8 +231,8 @@ function setup() {
     // bottom of page
     waypointsTwo.push(gridify(new coord(20, documentHeight + 300)));
 
-    waypointsThree.push(gridify(new coord(windowWidth - 60, arrivalAndParkingTop - spacing * 2)));
-    waypointsThree.push(gridify(new coord(windowWidth - 60, arrivalAndParkingTop + arrivalAndParkingTop + spacing * 2)));
+    waypointsThree.push(gridify(new coord(windowWidth - 60, resourcesTop - spacing * 2)));
+    waypointsThree.push(gridify(new coord(windowWidth - 60, resourcesTop + resourcesTop + spacing * 2)));
 }
 
 function gridify(coordinate) {
