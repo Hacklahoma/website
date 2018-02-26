@@ -593,6 +593,10 @@ p .bold {
 	flex: 0 1 30%;
 }
 
+#techlahomalogo {
+	flex: 0 1 40%;
+}
+
 #smlogo {
 	flex: 0 1 40%;
 }
@@ -699,4 +703,48 @@ p .bold {
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+#prizes {
+	background-color: #FFFFFF;
+	color: #000000;
+	padding-bottom: 2em;
+}
+
+#prizes #faqItem {
+	margin: 1em;
+}
+
+#prizes img {
+	max-width: calc(100% - 2em);
+	margin: 1em;
+}
+
+#hardware {
+	padding-bottom: 2em;
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+}
+
+#hardware h1 {
+	flex: 0 0 100%;
+}
+
+#hardware li {
+	font-size: 1.1em;
+}
+
+#hardware-left {
+	width: calc(30% - 4em);
+	margin: 2em;
+}
+
+#hardware-left img {
+	max-width: 80%;
+}
+
+#hardware-right {
+	width: calc(60% - 4em);
+	margin: 2em;
 }
