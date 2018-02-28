@@ -590,15 +590,19 @@ p .bold {
 }
 
 #mlhlogo {
-	flex: 0 1 30%;
+	flex: 0 1 20%;
 }
 
 #techlahomalogo {
-	flex: 0 1 40%;
+	flex: 0 1 20%;
 }
 
 #smlogo {
-	flex: 0 1 40%;
+	flex: 0 1 20%;
+}
+
+#taikologo {
+	flex: 0 1 20%;
 }
 
 #garminlogo {
