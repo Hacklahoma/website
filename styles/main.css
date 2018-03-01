@@ -512,7 +512,7 @@ p .bold {
 	margin-top: 2em;
 	margin-bottom: 2em;
 	display: inline-block;
-	vertical-align: middle;
+	vertical-align: none;
 	white-space: nowrap;
 }
 
