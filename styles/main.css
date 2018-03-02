@@ -594,11 +594,15 @@ p .bold {
 }
 
 #techlahomalogo {
-	flex: 0 1 20%;
+	flex: 0 1 30%;
+}
+
+#hackdfwlogo {
+	flex: 0 1 25%;
 }
 
 #smlogo {
-	flex: 0 1 20%;
+	flex: 0 1 30%;
 }
 
 #taikologo {
