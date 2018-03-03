@@ -817,9 +817,37 @@
 				<section id="resourcesInfo">
 					<h1 class="anchor" style="text-align: center;">Resources</h1>
 					<p style="text-align: center; font-size: 30px">
-						<div style="width: 65%; margin-left: auto; margin-right: auto; font-size: 2em;">
-							<!-- Click <a href="" class="neverUnderline" style="color: #912929;">here</a> for resources available to attendees during the hackathon!  -->
-							Coming soon!
+						<div id="hardware" style="width: 65%; margin-left: auto; margin-right: auto; font-size: 2em;">
+							<p>See <a href="https://hacklahoma18.devpost.com/" class="neverUnderline">the Hacklahoma Devpost</a> for challenges and prizes.</p>
+							<div id="hardware-left">
+								<h2>APIs, Software, etc.</h2>
+	                            <p><a href="https://account.wolfram.com/redeem/hacklahomaW12018" class="neverUnderline">Wolfram|One</a></p>
+	                            <p><a href="https://v3v10.vitechinc.com/hacklahoma/" class="neverUnderline">Vitech Dataset</a></p>
+	                            <p><a href="http://www.domain.com/mlh/index.mas?utm_source=Direct" class="neverUnderline">Domain.com</a></p>
+	                            <p>$100 AWS Credit (Check your email)</p>
+		                    </div>
+		                    <div id="hardware-right">
+		                        <h2>Hardware</h2>
+								<table>
+								    <tr><td>3D printers (Prints must take no longer than 1.5 hours)</td></tr>
+								    <tr><td>8 Amazon Echo</td></tr>
+								    <tr><td>3 Samsung Gear VR</td></tr>
+								    <tr><td>6 Oculus Rifts</td></tr>
+								    <tr><td>1 Amazon Fire Phone</td></tr>
+								    <tr><td>6 Arduino 10</td></tr>
+								    <tr><td>6 Base Shield</td></tr>
+								    <tr><td>6 DragonBoard 410c</td></tr>
+								    <tr><td>1 LinkSprite 7" Touchscreen Monitor and keyboard</td></tr>
+								    <tr><td>1 Grove Starter Kit</td></tr>
+								    <tr><td>1 Intel Starter Kit</td></tr>
+								    <tr><td>5 Leap Motion</td></tr>
+								    <tr><td>1 Muse Headband</td></tr>
+								    <tr><td>6 Myo Armband</td></tr>
+								    <tr><td>4 Pebble Time</td></tr>
+								    <tr><td>2 Alienware Laptop</td></tr>
+								    <tr><td>2 Dell XPS 13 Laptop</td></tr>
+								</table>
+		                    </div>
 						</div>
 					</p>
 				</section>

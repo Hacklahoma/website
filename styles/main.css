@@ -739,13 +739,22 @@ p .bold {
 	flex: 0 0 100%;
 }
 
-#hardware li {
-	font-size: 1.1em;
+#hardware p {
+	font-size: 1em;
+	padding: .2em;
+}
+
+#hardware ul {
+	list-style-type: none;
+}
+
+#hardware a {
+	color: black;
 }
 
 #hardware-left {
-	width: calc(30% - 4em);
-	margin: 2em;
+	width: calc(50% - 2em);
+	margin-right: 2em;
 }
 
 #hardware-left img {
@@ -753,6 +762,10 @@ p .bold {
 }
 
 #hardware-right {
-	width: calc(60% - 4em);
-	margin: 2em;
+	width: calc(50% - 2em);
+	margin-left: 2em;
+}
+
+#resourcesInfo p {
+	margin: auto;
 }
