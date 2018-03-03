@@ -105,7 +105,7 @@
                 <!-- Information about Hacklahoma on landing page. -->
                 <div class="header-info">
     	            <img src="images/gear-white.png" alt="Hacklahoma letter icon" style="margin=top: 0; max-width: 100%; height: auto">
-    				
+
     				<p style="font-size: 32px; margin-top: 2em; margin-bottom: 3em;">Welcome to Hacklahoma!</p>
 
     				<!-- Social media logos. -->
@@ -114,16 +114,16 @@
 						<a class="neverUnderline" target='_blank' href="https://twitter.com/hacklahoma"><img src="images/twitter.png" class="socMedLogo" alt="Twitter" /></a><br />
 						<a class="neverUnderline" target='_blank' href="https://www.instagram.com/hacklahoma/"><img src="images/instagram.png" class="socMedLogo" alt="Instagram" /></a>
 					</div>
-					
+
 					<div id="slackAndWifi">
 						<a id="slackInfo" class="neverUnderline" target='_blank' href="https://hacklahoma18.slack.com" alt="Slack">
 							<svg width="50" height="50" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path d="M165.964 15.838c-3.89-11.975-16.752-18.528-28.725-14.636-11.975 3.89-18.528 16.752-14.636 28.725l58.947 181.365c4.048 11.187 16.132 17.473 27.732 14.135 12.1-3.483 19.475-16.334 15.614-28.217L165.964 15.838" fill="#DFA22F"/><path d="M74.626 45.516C70.734 33.542 57.873 26.989 45.9 30.879 33.924 34.77 27.37 47.631 31.263 59.606l58.948 181.366c4.047 11.186 16.132 17.473 27.732 14.132 12.099-3.481 19.474-16.332 15.613-28.217L74.626 45.516" fill="#3CB187"/><path d="M240.162 166.045c11.975-3.89 18.526-16.75 14.636-28.726-3.89-11.973-16.752-18.527-28.725-14.636L44.708 181.632c-11.187 4.046-17.473 16.13-14.135 27.73 3.483 12.099 16.334 19.475 28.217 15.614l181.372-58.93" fill="#CE1E5B"/><path d="M82.508 217.27l43.347-14.084-14.086-43.352-43.35 14.09 14.089 43.347" fill="#392538"/><path d="M173.847 187.591c16.388-5.323 31.62-10.273 43.348-14.084l-14.088-43.36-43.35 14.09 14.09 43.354" fill="#BB242A"/><path d="M210.484 74.706c11.974-3.89 18.527-16.751 14.637-28.727-3.89-11.973-16.752-18.526-28.727-14.636L15.028 90.293C3.842 94.337-2.445 106.422.896 118.022c3.481 12.098 16.332 19.474 28.217 15.613l181.371-58.93" fill="#72C5CD"/><path d="M52.822 125.933c11.805-3.836 27.025-8.782 43.354-14.086-5.323-16.39-10.273-31.622-14.084-43.352l-43.36 14.092 14.09 43.346" fill="#248C73"/><path d="M144.16 96.256l43.356-14.088a546179.21 546179.21 0 0 0-14.089-43.36L130.07 52.9l14.09 43.356" fill="#62803A"/></svg>
 						</a>
-						
+
 						<a id="devpostInfo" class="neverUnderline" target="_blank" href="https://hacklahoma18.devpost.com" alt="Devpost">
 							<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 280.3 242.7" enable-background="new 0 0 280.3 242.7" xml:space="preserve"><g id="XMLID_126_"><polygon id="XMLID_3_" fill="#003E54" points="70.1,242.7 0,121.4 70.1,0 210.2,0 280.3,121.4 210.2,242.7  "/><path id="XMLID_2_" fill="#FFFFFF" d="M132.7,195h-44V47.7h46.1c42.1,0,73.3,19.8,73.3,73.7C208.1,173.2,170.6,195,132.7,195z    M133.7,76.3h-15.6v90.1h14.5c30.9,0,45.1-18.1,45.1-45.1C177.8,91.3,164.9,76.3,133.7,76.3z"/></g></svg>
 						</a>
-						
+
 						<div id="wifiInfo">
 							<img src="images/wifi-icon-1.png" style="padding-left: 1em; float: left;" />
 							<p style="font-size: 1em;">SSID: OUWIFI</p>
@@ -758,7 +758,7 @@
 						<div class="googleMapsIframe">
 							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3259.8269510118616!2d-97.44402318467694!3d35.21077916323586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b269d4244ae647%3A0xee193280b8b016ad!2sDevon+Energy+Hall%2C+Norman%2C+OK+73019!5e0!3m2!1sen!2sus!4v1516570006552" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 						</div><br />
-						
+
 						<h3>Rawl Engineering Practice Facility</h3>
 						<p>850 S Jenkins Ave Norman, OK 73019</p>
 						<div class="googleMapsIframe">
@@ -766,7 +766,7 @@
 						</div>
 					</div>
 				</section>
-				
+
 				<!-- The Floor Plans section. -->
 				<section id="floorPlansInfo">
 					<h1 class="anchor" style="text-align: center; margin: auto;">Floor Plans</h1>
@@ -780,7 +780,7 @@
 							<li data-target="#floorPlans" data-slide-to="4"></li>
 							<li data-target="#floorPlans" data-slide-to="5"></li>
 						</ul>
-						
+
 						<!-- The slideshow -->
 						<div class="carousel-inner">
 							<div class="carousel-item active">
@@ -802,7 +802,7 @@
 								<img src="images/repf.png" alt="REPF" width="1280" height="720">
 							</div>
 						</div>
-						
+
 						<!-- Left and right controls -->
 						<a id="prevArrow" class="carousel-control-prev" href="#floorPlans" data-slide="prev">
 							<span class="carousel-control-prev-icon"></span>
@@ -917,7 +917,7 @@
 		<script src="scripts/moment.min.js"></script>
 		<!-- <script src="scripts/fullcalendar.min.js"></script>
   		<script src="scripts/schedule.js"></script> -->
-  		
+
   		<style type="text/css">
 			.fc-axis
 			{
